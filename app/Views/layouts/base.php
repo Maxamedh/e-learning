@@ -11,6 +11,8 @@
     <link href="<?=base_url('assets/icons/fontawesome/css/brands.min.css')?>" rel="stylesheet">
     <link href="<?=base_url('assets/icons/fontawesome/css/solid.min.css')?>" rel="stylesheet">
     <link href="<?=base_url('assets/css/style.css')?>" rel="stylesheet">
+    <meta name="csrf-token" content="<?= csrf_hash() ?>">
+    <base href="<?= base_url() ?>">
 </head>
 <body>
     <!-- Preloader -->

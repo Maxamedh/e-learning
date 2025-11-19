@@ -8,6 +8,11 @@
     <script  src="<?= base_url('assets/js/bootstrap.bundle.min.js')?>"></script>
     <script  src="<?= base_url('assets/plugin/chart/chart.js')?>"></script>
     <script  src="<?= base_url('assets/js/chart.js')?>"></script>
+    <script>
+        // Set base URL for JavaScript
+        const baseURL = '<?= base_url() ?>';
+    </script>
+    <script  src="<?= base_url('assets/js/api.js')?>"></script>
     <script  src="<?= base_url('assets/js/main.js')?>"></script>
 </body>
 </html>
