@@ -4,12 +4,12 @@
     <div class="sidebar-header">
         <div class="lg-logo">
             <a href="<?= base_url('admin/dashboard') ?>">
-                <img src="<?= base_url('logo/jpg/logo@3x-100.jpg') ?>" alt="E-LOOX Academy Logo" style="max-width: 180px; height: auto;">
+                <img src="<?= base_url('assets/images/logo@3x-100.jpg') ?>" alt="E-LOOX Academy Logo" style="max-width: 180px; height: auto;" onerror="this.onerror=null; this.style.display='none';">
             </a>
         </div>
         <div class="sm-logo">
             <a href="<?= base_url('admin/dashboard') ?>">
-                <img src="<?= base_url('logo/jpg/logo@3x-100.jpg') ?>" alt="E-LOOX Academy Logo" style="max-width: 50px; height: auto;">
+                <img src="<?= base_url('assets/images/logo@3x-100.jpg') ?>" alt="E-LOOX Academy Logo" style="max-width: 50px; height: auto;" onerror="this.onerror=null; this.style.display='none';">
             </a>
         </div>
     </div>

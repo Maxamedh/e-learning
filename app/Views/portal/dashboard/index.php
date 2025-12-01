@@ -1,0 +1,137 @@
+<?= $this->extend('layouts/portal') ?>
+<?= $this->section('content') ?>
+
+<style>
+    .dashboard-hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: #fff;
+        padding: 3rem 0;
+        margin-bottom: 3rem;
+    }
+    
+    .stat-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        border: 1px solid #e0e0e0;
+        text-align: center;
+    }
+    
+    .stat-card .number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+    }
+    
+    .stat-card .label {
+        color: var(--text-gray);
+        font-size: 0.875rem;
+    }
+    
+    .course-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    
+    .course-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .progress-bar-container {
+        background: #e0e0e0;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+    }
+    
+    .progress-bar-fill {
+        background: var(--primary-blue);
+        height: 100%;
+        transition: width 0.3s;
+    }
+</style>
+
+<div class="dashboard-hero">
+    <div class="container">
+        <h1 class="mb-2">Welcome back, <?= esc(session()->get('user')['first_name'] ?? 'Student') ?>!</h1>
+        <p class="mb-0 opacity-90">Continue your learning journey</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Stats -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="number"><?= $totalCourses ?></div>
+                <div class="label">Total Courses</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="number"><?= $inProgressCourses ?></div>
+                <div class="label">In Progress</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="number"><?= $completedCourses ?></div>
+                <div class="label">Completed</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Continue Learning -->
+    <?php if (!empty($recentCourses)): ?>
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Continue Learning</h2>
+            <a href="<?= base_url('portal/my-courses') ?>" class="btn btn-link">View All <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+        <div class="row g-4">
+            <?php foreach ($recentCourses as $enrollment): ?>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="<?= base_url('portal/learn/' . $enrollment['course_id']) ?>" class="course-card">
+                        <?php if (!empty($enrollment['thumbnail_url'])): ?>
+                            <img src="<?= esc($enrollment['thumbnail_url']) ?>" alt="<?= esc($enrollment['title']) ?>" 
+                                 style="width: 100%; height: 150px; object-fit: cover;">
+                        <?php else: ?>
+                            <div style="height: 150px; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image fa-2x text-muted"></i>
+                            </div>
+                        <?php endif; ?>
+                        <div class="p-3">
+                            <h6 class="mb-2" style="font-size: 0.9rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                <?= esc($enrollment['title']) ?>
+                            </h6>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: <?= $enrollment['progress_percentage'] ?>%"></div>
+                            </div>
+                            <div class="text-muted small mt-2"><?= number_format($enrollment['progress_percentage'], 0) ?>% Complete</div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <?php else: ?>
+        <div class="text-center py-5">
+            <i class="fas fa-book-open fa-3x text-muted mb-3"></i>
+            <h4>No courses yet</h4>
+            <p class="text-muted">Start learning by browsing our courses</p>
+            <a href="<?= base_url('courses') ?>" class="btn btn-primary">Browse Courses</a>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?= $this->endSection() ?>
+

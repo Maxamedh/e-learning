@@ -95,9 +95,7 @@ $routes->group('admin', ['namespace' => 'App\Controllers', 'filter' => 'adminAut
     });
 });
 
-// Public/Client Portal Routes
-$routes->get('/', 'Home::index'); // Public homepage
-$routes->get('/portal', 'Home::index'); // Student portal
+// Public/Client Portal Routes - Moved to line 221 below
 
 // Legacy routes (redirect to admin if logged in as admin)
 $routes->get('/course', 'Course::index');
@@ -215,4 +213,28 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) 
     $routes->get('notifications', 'NotificationApiController::index');
     $routes->get('notifications/(:segment)', 'NotificationApiController::show/$1');
     $routes->put('notifications/(:segment)', 'NotificationApiController::update/$1');
+});
+
+// Portal Routes (Public - Student Portal)
+$routes->get('/', 'Portal\Home::index');
+$routes->get('courses', 'Portal\Courses::index');
+$routes->get('courses/(:num)', 'Portal\Courses::view/$1');
+$routes->get('categories/(:num)', 'Portal\Courses::category/$1');
+
+// Portal Authentication (Public)
+$routes->group('portal', ['namespace' => 'App\Controllers\Portal'], function($routes) {
+    $routes->get('login', 'Auth::login');
+    $routes->post('login', 'Auth::login');
+    $routes->get('register', 'Auth::register');
+    $routes->post('register', 'Auth::register');
+    $routes->get('logout', 'Auth::logout');
+});
+
+// Portal Routes (Protected - Student Only)
+$routes->group('portal', ['namespace' => 'App\Controllers\Portal', 'filter' => 'portalAuth'], function($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+    $routes->get('my-courses', 'Dashboard::myCourses');
+    $routes->get('learn/(:num)', 'Learn::index/$1');
+    $routes->get('learn/(:num)/lecture/(:num)', 'Learn::lecture/$1/$2');
+    $routes->post('enroll/(:num)', 'Courses::enroll/$1');
 });

@@ -92,7 +92,7 @@
                 <a href="<?= base_url('admin/login') ?>" class="btn-welcome btn-primary-welcome">
                     <i class="fas fa-user-shield me-2"></i>Admin Login
                 </a>
-                <a href="<?= base_url('portal') ?>" class="btn-welcome btn-outline-welcome">
+                <a href="<?= base_url() ?>" class="btn-welcome btn-outline-welcome">
                     <i class="fas fa-graduation-cap me-2"></i>Student Portal
                 </a>
                 <a href="<?= base_url('login') ?>" class="btn-welcome btn-outline-welcome">
