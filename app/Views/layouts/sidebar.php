@@ -3,13 +3,13 @@
     <!-- Sidebar Header -->
     <div class="sidebar-header">
         <div class="lg-logo">
-            <a href="<?= base_url('/') ?>">
-                <img src="<?= base_url('assets/images/logo.png') ?>" alt="logo large">
+            <a href="<?= base_url('admin/dashboard') ?>">
+                <img src="<?= base_url('logo/jpg/logo@3x-100.jpg') ?>" alt="E-LOOX Academy Logo" style="max-width: 180px; height: auto;">
             </a>
         </div>
         <div class="sm-logo">
-            <a href="<?= base_url('/') ?>">
-                <img src="<?= base_url('assets/images/small-logo.png') ?>" alt="logo small">
+            <a href="<?= base_url('admin/dashboard') ?>">
+                <img src="<?= base_url('logo/jpg/logo@3x-100.jpg') ?>" alt="E-LOOX Academy Logo" style="max-width: 50px; height: auto;">
             </a>
         </div>
     </div>
@@ -20,7 +20,7 @@
 
             <!-- Dashboard -->
             <li>
-                <a href="<?= base_url('/') ?>" class="sidebar-link active">
+                <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-link <?= (uri_string() == 'admin/dashboard' || uri_string() == 'admin') ? 'active' : '' ?>">
                     <i class="fa-solid fa-house"></i><p>Dashboard</p>
                 </a>
             </li>
@@ -32,14 +32,21 @@
                     <p>Course Management <i class="fa-solid fa-chevron-right right-icon"></i></p>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('course') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Courses</p></a></li>
-                    <li><a href="<?= base_url('course-details') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Course Details</p></a></li>
-                    <li><a href="<?= base_url('sections') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Sections</p></a></li>
-                    <li><a href="<?= base_url('lectures') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Lectures</p></a></li>
-                    <li><a href="<?= base_url('assignments') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Assignments</p></a></li>
-                    <li><a href="<?= base_url('quizzes') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Quizzes</p></a></li>
-                    <li><a href="<?= base_url('reviews') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Reviews</p></a></li>
-                    <li><a href="<?= base_url('certificates') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Certificates</p></a></li>
+                    <li><a href="<?= base_url('admin/courses') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>All Courses</p></a></li>
+                    <li><a href="<?= base_url('admin/courses/create') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Create Course</p></a></li>
+                    <li><a href="<?= base_url('admin/categories') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Categories</p></a></li>
+                    <li><a href="<?= base_url('admin/enrollments') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Enrollments</p></a></li>
+                </ul>
+            </li>
+            
+            <!-- Course Content Management -->
+            <li>
+                <a href="#" class="sidebar-link submenu-parent">
+                    <i class="fa-solid fa-book-open"></i>
+                    <p>Course Content <i class="fa-solid fa-chevron-right right-icon"></i></p>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="<?= base_url('admin/courses') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Select Course First</p></a></li>
                 </ul>
             </li>
 
@@ -50,36 +57,19 @@
                     <p>User Management <i class="fa-solid fa-chevron-right right-icon"></i></p>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('students') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Students</p></a></li>
-                    <li><a href="<?= base_url('teacher') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Teachers</p></a></li>
-                    <li><a href="<?= base_url('staff') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Staff</p></a></li>
-                    <li><a href="<?= base_url('users') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>All Users</p></a></li>
+                    <li><a href="<?= base_url('admin/users') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>All Users</p></a></li>
+                    <li><a href="<?= base_url('admin/users?role=student') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Students</p></a></li>
+                    <li><a href="<?= base_url('admin/users?role=instructor') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Instructors</p></a></li>
+                    <li><a href="<?= base_url('admin/users?role=admin') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Admins</p></a></li>
                 </ul>
             </li>
 
-            <!-- Academic Management -->
+            <!-- Order Management -->
             <li>
-                <a href="#" class="sidebar-link submenu-parent">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <p>Academic Management <i class="fa-solid fa-chevron-right right-icon"></i></p>
+                <a href="<?= base_url('admin/orders') ?>" class="sidebar-link <?= (strpos(uri_string(), 'admin/orders') !== false) ? 'active' : '' ?>">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <p>Orders & Payments</p>
                 </a>
-                <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('department') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Departments</p></a></li>
-                    <li><a href="<?= base_url('library') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Library</p></a></li>
-                    <li><a href="<?= base_url('enrollments') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Enrollments</p></a></li>
-                </ul>
-            </li>
-
-            <!-- Financial Management -->
-            <li>
-                <a href="#" class="sidebar-link submenu-parent">
-                    <i class="fa-solid fa-coins"></i>
-                    <p>Financial Management <i class="fa-solid fa-chevron-right right-icon"></i></p>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('fees') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Fees</p></a></li>
-                    <li><a href="<?= base_url('orders') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Orders</p></a></li>
-                </ul>
             </li>
 
             <!-- Discussion & Notifications -->

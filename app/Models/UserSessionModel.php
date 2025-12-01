@@ -7,15 +7,39 @@ use CodeIgniter\Model;
 class UserSessionModel extends Model
 {
     protected $table = 'user_sessions';
-    protected $primaryKey = 'session_id';
-    protected $useAutoIncrement = false;
+    protected $primaryKey = 'id';
+    protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'session_id', 'user_id', 'login_time', 'logout_time',
-        'ip_address', 'user_agent', 'is_active'
+        'user_id', 'session_token', 'device_type', 'ip_address', 
+        'user_agent', 'expires_at'
     ];
 
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = null;
+
+    public function getActiveSessions($userId)
+    {
+        return $this->where('user_id', $userId)
+            ->where('expires_at >', date('Y-m-d H:i:s'))
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+    }
+
+    public function invalidateSession($sessionToken)
+    {
+        return $this->where('session_token', $sessionToken)
+            ->set(['expires_at' => date('Y-m-d H:i:s')])
+            ->update();
+    }
+
+    public function cleanupExpiredSessions()
+    {
+        return $this->where('expires_at <', date('Y-m-d H:i:s'))
+            ->delete();
+    }
 }

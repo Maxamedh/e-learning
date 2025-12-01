@@ -1,0 +1,1623 @@
+CRITICAL - 2025-12-01 09:20:08 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "template/header.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('template/header.php')
+ 2 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('template/header', null, true)
+ 3 APPPATH\Views\welcome_message.php(2): CodeIgniter\View\View->include('template/header')
+ 4 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\e-learning\\app\\Views\\welcome_message.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('welcome_message', [], true)
+ 7 APPPATH\Controllers\Home.php(9): view('welcome_message')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 09:22:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:22:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:22:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:23:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:24:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:26:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:27:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:30:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:30:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:30:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:30:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(52): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#3 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#4 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#5 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#8 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#9 {main}
+ERROR - 2025-12-01 09:33:13 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'e-learning', 3306, '', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(68): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'e-learning' in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\e-learning\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\e-learning\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\e-learning\app\Controllers\SetupDatabase.php(68): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+#7 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-01 09:34:45 --> Error: Call to undefined method Config\Database::config()
+[Method: GET, Route: setup-database]
+in APPPATH\Controllers\SetupDatabase.php on line 18.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SetupDatabase->index()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SetupDatabase))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 09:36:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:36:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:53:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:53:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:53:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:57:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:57:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-01 09:57:11 --> Error: Call to undefined method CodeIgniter\Session\Session::getDriver()
+[Method: GET, Route: debug-login]
+in APPPATH\Controllers\Admin\DebugLogin.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\DebugLogin->test()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\DebugLogin))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 09:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-01 09:58:46 --> Error: Call to undefined method CodeIgniter\Session\Session::isStarted()
+[Method: GET, Route: debug-login]
+in APPPATH\Controllers\Admin\DebugLogin.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\DebugLogin->test()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\DebugLogin))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 09:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 09:59:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:04:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:04:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:04:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:04:53 --> AdminAuth: No user in session
+DEBUG - 2025-12-01 10:04:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:05:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:05:25 --> AdminAuth: No user in session
+DEBUG - 2025-12-01 10:05:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:08:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-01 10:08:43 --> Error: Call to undefined method CodeIgniter\Session\Session::getSessionID()
+[Method: GET, Route: test-session]
+in APPPATH\Controllers\Admin\TestSession.php on line 18.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\TestSession->index()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\TestSession))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 10:09:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:09:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:09:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:09:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:10:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:33:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:33:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:34:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:49:29 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:49:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:49:39 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 10:49:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:50:08 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 10:50:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:55:48 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 10:55:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:56:00 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 10:56:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:56:40 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:56:46 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:56:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:56:48 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:57:10 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:57:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:57:35 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:58:11 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:58:25 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 10:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:59:08 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 10:59:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 10:59:26 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 10:59:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:00:45 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 11:00:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:00:50 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 11:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:00:50 --> Login attempt - Email: admin@elooxacademy.com, Method: POST
+DEBUG - 2025-12-01 11:00:50 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 11:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:00 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 11:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:00 --> Login attempt - Email: admin@elooxacademy.com, Method: POST
+ERROR - 2025-12-01 11:01:00 --> Login failed - Invalid password for: admin@elooxacademy.com
+DEBUG - 2025-12-01 11:01:00 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 11:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:23 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 11:01:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:23 --> Login attempt - Email: admin@elooxacademy.com, Method: POST
+INFO - 2025-12-01 11:01:24 --> Session set successfully for user: admin@elooxacademy.com, ID: 1, Role: admin
+INFO - 2025-12-01 11:01:24 --> Session ID: ce0cdb38e67ddcdc7f9104c64dad71d2
+DEBUG - 2025-12-01 11:01:24 --> Session data before redirect: {"id":"1","uuid":"9d071a36-6c85-4175-8615-d5a31aa65484","email":"admin@elooxacademy.com","role":"admin","first_name":"Admin","last_name":"User","profile_picture":null,"is_admin":true,"is_instructor":false}
+DEBUG - 2025-12-01 11:01:24 --> Session cookie will be set with path: /
+ERROR - 2025-12-01 11:01:24 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'a77e72df403bc87e1762697ad87f11fe0dd3c79f82ac5e752d84fe4c65017...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(157): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->login()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-01 11:01:24 --> Failed to create session record: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'a77e72df403bc87e1762697ad87f11fe0dd3c79f82ac5e752d84fe4c65017...' at line 1
+INFO - 2025-12-01 11:01:24 --> User logged in: admin@elooxacademy.com
+INFO - 2025-12-01 11:01:24 --> Login successful - Redirecting to dashboard for user: admin@elooxacademy.com
+INFO - 2025-12-01 11:01:24 --> Session verified - User ID: 1, Role: admin
+DEBUG - 2025-12-01 11:01:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:24 --> AdminAuth Filter - Session ID: ce0cdb38e67ddcdc7f9104c64dad71d2
+DEBUG - 2025-12-01 11:01:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:01:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:01:37 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 11:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:37 --> AdminAuth::login - User already in session: admin@elooxacademy.com
+DEBUG - 2025-12-01 11:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:37 --> AdminAuth Filter - Session ID: ce0cdb38e67ddcdc7f9104c64dad71d2
+DEBUG - 2025-12-01 11:01:37 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:01:37 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:01:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:01:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:02:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-01 11:05:06 --> ErrorException: Undefined array key "user_id"
+[Method: POST, Route: api/auth/login]
+in APPPATH\Controllers\Api\AuthController.php on line 98.
+ 1 APPPATH\Controllers\Api\AuthController.php(98): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user_id"', 'C:\\xampp\\htdocs\\e-learning\\app\\Controllers\\Api\\AuthController.php', 98)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Api\AuthController->login()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\AuthController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 11:05:14 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 11:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:05:14 --> AdminAuth::login - User already in session: admin@elooxacademy.com
+DEBUG - 2025-12-01 11:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:05:14 --> AdminAuth Filter - Session ID: ce0cdb38e67ddcdc7f9104c64dad71d2
+DEBUG - 2025-12-01 11:05:14 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:05:14 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:29:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:29:57 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:29:57 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:29:57 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:30:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:30:15 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:30:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:30:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:30:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:30:21 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:30:21 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:30:21 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:30:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:30:59 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:30:59 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:30:59 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:31:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:31:13 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:31:13 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:31:13 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:31:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:31:18 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:31:18 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:31:18 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:31:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:31:21 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:31:21 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:31:21 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:33:02 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:33:02 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:33:02 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:33:06 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:33:06 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:33:06 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:33:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:33:19 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:33:19 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:33:19 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:33:24 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:33:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:33:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:34:21 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:34:21 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:34:21 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:34:21 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:34:21 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 11:34:21 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:34:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:34:31 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:34:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:34:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:34:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:34:32 --> AdminAuth Filter - Session ID: ba152551b0e7f0ad7e8a7f94d7a53d6d
+DEBUG - 2025-12-01 11:34:32 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 11:34:32 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:35:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:35:01 --> AdminAuth Filter - Session ID: 2cb36f9a96b1a961324a3131a45fa988
+DEBUG - 2025-12-01 11:35:01 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:35:01 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:39:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:39:32 --> AdminAuth Filter - Session ID: 2cb36f9a96b1a961324a3131a45fa988
+DEBUG - 2025-12-01 11:39:32 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:39:32 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:39:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:39:34 --> AdminAuth Filter - Session ID: 2cb36f9a96b1a961324a3131a45fa988
+DEBUG - 2025-12-01 11:39:34 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:39:34 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:40:47 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:40:47 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:40:47 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:40:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:40:51 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:40:51 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:40:51 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:41:30 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:41:30 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:41:30 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:04 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:04 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:04 --> AdminAuth: User found in session - ID: 1, Role: admin
+ERROR - 2025-12-01 11:42:05 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('programming', 'programming', 'fa-book', NULL, 1, '2025-12-01 11:42...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `ca...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ca...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ca...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ca...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\Categories.php(47): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\Categories->store()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Categories))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-12-01 11:42:05 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('programming', 'programming', 'fa-book', NULL, 1, '2025-12-01 11:42...' at line 1
+[Method: POST, Route: admin/categories/store]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (:name:, :description:, :icon:, :parent_id:, :is_active:, :created_at:, ::)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Admin\Categories.php(47): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\Categories->store()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Categories))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-01 11:42:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('programming', 'programming', 'fa-book', NULL, 1, '2025-12-01 11:42...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (\'programming\', \'programming\', \'fa-book\', NULL, 1, \'2025-12-01 11:42:05\', \'2025-12-01 11:42:05\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (\'programming\', \'programming\', \'fa-book\', NULL, 1, \'2025-12-01 11:42:05\', \'2025-12-01 11:42:05\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (:name:, :description:, :icon:, :parent_id:, :is_active:, :created_at:, ::)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Admin\Categories.php(47): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\Categories->store()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Categories))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-01 11:42:05 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('programming', 'programming', 'fa-book', NULL, 1, '2025-12-01 11:42...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (\'programming\', \'programming\', \'fa-book\', NULL, 1, \'2025-12-01 11:42:05\', \'2025-12-01 11:42:05\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (\'programming\', \'programming\', \'fa-book\', NULL, 1, \'2025-12-01 11:42:05\', \'2025-12-01 11:42:05\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (\'programming\', \'programming\', \'fa-book\', NULL, 1, \'2025-12-01 11:42:05\', \'2025-12-01 11:42:05\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `categories` (`name`, `description`, `icon`, `parent_id`, `is_active`, `created_at`, ) VALUES (:name:, :description:, :icon:, :parent_id:, :is_active:, :created_at:, ::)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Admin\Categories.php(47): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\Categories->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Categories))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 11:42:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:25 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:25 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:25 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:31 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:36 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:36 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:36 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:40 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:40 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:50 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:50 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:50 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:54 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:54 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:54 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:42:58 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:42:58 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:42:58 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:44:06 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:44:06 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:44:06 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:44:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:44:08 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:44:08 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:44:08 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:44:18 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:44:18 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:44:18 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:44:20 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:44:20 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:44:20 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:44:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:44:58 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:44:58 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:44:58 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:44:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:44:58 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:44:58 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 11:44:58 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:45:07 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:45:07 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:45:07 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:45:13 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:45:13 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:45:13 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:45:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:45:17 --> AdminAuth Filter - Session ID: 2dcef38dc673786bd11c9aa8a194ff9d
+DEBUG - 2025-12-01 11:45:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:45:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:46:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:46:16 --> AdminAuth Filter - Session ID: 5999a6dde05f26da933f1591bb0ac110
+DEBUG - 2025-12-01 11:46:16 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:46:16 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:46:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:46:18 --> AdminAuth Filter - Session ID: 5999a6dde05f26da933f1591bb0ac110
+DEBUG - 2025-12-01 11:46:18 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:46:18 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:53:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:53:49 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:53:49 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:53:49 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:53:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:53:59 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:53:59 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:53:59 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:54:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:54:06 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:54:06 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:54:06 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:55:02 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:55:02 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:55:02 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:56:42 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:56:42 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:56:42 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:56:42 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:56:42 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 11:56:42 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:57:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:57:15 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:57:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:57:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:57:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:57:31 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:57:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:57:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:57:35 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:57:35 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:57:35 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:57:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:57:43 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:57:43 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:57:43 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:58:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:58:13 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:58:13 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:58:13 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:58:17 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:58:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:58:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:58:27 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:58:27 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:58:27 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:58:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:58:33 --> AdminAuth Filter - Session ID: fee8f02c1d95408d865393cecd70b35f
+DEBUG - 2025-12-01 11:58:33 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:58:33 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:59:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:59:26 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 11:59:26 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:59:26 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:59:31 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 11:59:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:59:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:59:38 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 11:59:38 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:59:38 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 11:59:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 11:59:40 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 11:59:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 11:59:40 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:08 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:08 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:08 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:10 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:10 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:10 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:11 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:11 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:11 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:12 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:12 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:12 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:13 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:13 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:13 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:14 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:14 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:14 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:14 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:14 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:14 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:17 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:17 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 12:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 12:00:18 --> AdminAuth Filter - Session ID: 5219cbcbad1e87d01cea957ec0560371
+DEBUG - 2025-12-01 12:00:18 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 12:00:18 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:10:05 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 13:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:10:05 --> AdminAuth::login - User already in session: admin@elooxacademy.com
+DEBUG - 2025-12-01 13:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:10:05 --> AdminAuth Filter - Session ID: df116a708c5c0a241c90ca0bfd23da35
+DEBUG - 2025-12-01 13:10:05 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:10:05 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:10:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:10:08 --> AdminAuth Filter - Session ID: df116a708c5c0a241c90ca0bfd23da35
+DEBUG - 2025-12-01 13:10:08 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:10:08 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:46:31 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 13:46:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:46:31 --> AdminAuth::login - User already in session: admin@elooxacademy.com
+DEBUG - 2025-12-01 13:46:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:46:31 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:46:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:46:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:46:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:46:34 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:46:34 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:46:34 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:46:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:46:40 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:46:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:46:40 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:47:10 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:47:10 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:47:10 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:47:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:47:11 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:47:11 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 13:47:11 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:47:14 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:47:14 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:47:14 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:48:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:48:01 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:48:01 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:48:01 --> AdminAuth: User found in session - ID: 1, Role: admin
+ERROR - 2025-12-01 13:48:01 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'section1 :introductions', 'introductions', 1, 1, '2025-12-01 ...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `co...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `co...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `co...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `co...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\Sections.php(71): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\Sections->store('1')
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Sections))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-12-01 13:48:01 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'section1 :introductions', 'introductions', 1, 1, '2025-12-01 ...' at line 1
+[Method: POST, Route: admin/sections/1/store]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (:course_id:, :title:, :description:, :order_index:, :is_published:, :created_at:, ::)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Admin\Sections.php(71): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\Sections->store('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Sections))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-01 13:48:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'section1 :introductions', 'introductions', 1, 1, '2025-12-01 ...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (\'1\', \'section1 :introductions\', \'introductions\', 1, 1, \'2025-12-01 13:48:01\', \'2025-12-01 13:48:01\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (\'1\', \'section1 :introductions\', \'introductions\', 1, 1, \'2025-12-01 13:48:01\', \'2025-12-01 13:48:01\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (:course_id:, :title:, :description:, :order_index:, :is_published:, :created_at:, ::)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Admin\Sections.php(71): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\Sections->store('1')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Sections))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-01 13:48:01 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'section1 :introductions', 'introductions', 1, 1, '2025-12-01 ...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (\'1\', \'section1 :introductions\', \'introductions\', 1, 1, \'2025-12-01 13:48:01\', \'2025-12-01 13:48:01\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (\'1\', \'section1 :introductions\', \'introductions\', 1, 1, \'2025-12-01 13:48:01\', \'2025-12-01 13:48:01\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (\'1\', \'section1 :introductions\', \'introductions\', 1, 1, \'2025-12-01 13:48:01\', \'2025-12-01 13:48:01\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `course_sections` (`course_id`, `title`, `description`, `order_index`, `is_published`, `created_at`, ) VALUES (:course_id:, :title:, :description:, :order_index:, :is_published:, :created_at:, ::)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Admin\Sections.php(71): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin\Sections->store('1')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Sections))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-01 13:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:49:54 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:49:54 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:49:54 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:09 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:09 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:50:09 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:09 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:09 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 13:50:09 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:27 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:27 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:50:27 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:34 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:34 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:50:34 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:40 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:50:40 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:46 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:46 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:50:46 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:50:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:50:49 --> AdminAuth Filter - Session ID: a517141bc566ad1de8b64bc3a8d48bda
+DEBUG - 2025-12-01 13:50:49 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:50:49 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:51:43 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:51:43 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:51:43 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:51:43 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:51:43 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 13:51:43 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:52:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:52:19 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:52:19 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:52:19 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:52:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:52:23 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:52:23 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:52:23 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:52:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:52:40 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:52:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:52:40 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:52:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:52:57 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:52:57 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:52:57 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:53:02 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:53:02 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:53:02 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:53:09 --> AdminAuth Filter - Session ID: bef8fe9c13dd6082292de03c47653d8e
+DEBUG - 2025-12-01 13:53:09 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:53:09 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:59:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:59:24 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 13:59:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:59:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:59:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:59:32 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 13:59:32 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:59:32 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 13:59:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 13:59:39 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 13:59:39 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 13:59:39 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:00:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:00:02 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:00:02 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:00:02 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:00:11 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:00:11 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:00:11 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:00:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:00:55 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:00:55 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:00:55 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:01:00 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:01:00 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:01:00 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:01:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:01:03 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:01:03 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:01:03 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:01:06 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:01:06 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:01:06 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:01:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:01:54 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:01:54 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:01:54 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:01:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:01:54 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:01:54 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 14:01:54 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:02:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:02:56 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:02:56 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:02:56 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:02:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:02:59 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:02:59 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:02:59 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:03:15 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:03:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:03:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:03:15 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:03:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, _ci_old_input, __ci_vars, error
+DEBUG - 2025-12-01 14:03:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:03:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:03:19 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:03:19 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:03:19 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:03:31 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:03:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:03:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:03:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:03:56 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:03:56 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:03:56 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:03:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:03:56 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:03:56 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, _ci_old_input, __ci_vars, error
+DEBUG - 2025-12-01 14:03:56 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:04:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:04:01 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:04:01 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:04:01 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:04:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:04:04 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:04:04 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:04:04 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:04:09 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:04:09 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:04:09 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:04:23 --> AdminAuth Filter - Session ID: 38bef08087a4a909f6a50eba7a895db6
+DEBUG - 2025-12-01 14:04:23 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:04:23 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:04:26 --> AdminAuth Filter - Session ID: ed1e6b1f5ece8bff8b71d59f7f269477
+DEBUG - 2025-12-01 14:04:26 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:04:26 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:08:15 --> AdminAuth Filter - Session ID: ed1e6b1f5ece8bff8b71d59f7f269477
+DEBUG - 2025-12-01 14:08:15 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:08:15 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:08:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:08:17 --> AdminAuth Filter - Session ID: ed1e6b1f5ece8bff8b71d59f7f269477
+DEBUG - 2025-12-01 14:08:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:08:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:11:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:11:24 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:11:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:11:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:11:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:11:54 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:11:54 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:11:54 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:12:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:12:07 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:12:07 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:12:07 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:12:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:12:08 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:12:08 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:12:08 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:12:36 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:12:36 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:12:36 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:12:36 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:12:36 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 14:12:36 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:12:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:12:39 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:12:39 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:12:39 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:13:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:13:39 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:13:39 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:13:39 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:13:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:13:40 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:13:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:13:40 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:14:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:14:56 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:14:56 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:14:56 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:14:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:14:56 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:14:56 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, _ci_old_input, __ci_vars, _ci_validation_errors, errors
+DEBUG - 2025-12-01 14:14:56 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:15:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:15:24 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:15:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:15:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:15:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:15:25 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:15:25 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 14:15:25 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:15:44 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:15:44 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:15:44 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:15:44 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:15:44 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 14:15:44 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:15:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:15:48 --> AdminAuth Filter - Session ID: b11061f905da17904e1a22acffc29048
+DEBUG - 2025-12-01 14:15:48 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:15:48 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:16:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:16:25 --> AdminAuth Filter - Session ID: 6d84a882e0bd1440b5fcc3ac0db7f79f
+DEBUG - 2025-12-01 14:16:25 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:16:25 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:16:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:16:25 --> AdminAuth Filter - Session ID: 6d84a882e0bd1440b5fcc3ac0db7f79f
+DEBUG - 2025-12-01 14:16:25 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 14:16:25 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:16:32 --> AdminAuth Filter - Session ID: 6d84a882e0bd1440b5fcc3ac0db7f79f
+DEBUG - 2025-12-01 14:16:32 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:16:32 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:16:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:16:33 --> AdminAuth Filter - Session ID: 6d84a882e0bd1440b5fcc3ac0db7f79f
+DEBUG - 2025-12-01 14:16:33 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:16:33 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:16:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:16:38 --> AdminAuth Filter - Session ID: 6d84a882e0bd1440b5fcc3ac0db7f79f
+DEBUG - 2025-12-01 14:16:38 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:16:38 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:24:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:24:14 --> AdminAuth Filter - Session ID: 06fe40c1e52c996b946fab83eeb56f54
+DEBUG - 2025-12-01 14:24:14 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:24:14 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:24:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:24:17 --> AdminAuth Filter - Session ID: 06fe40c1e52c996b946fab83eeb56f54
+DEBUG - 2025-12-01 14:24:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:24:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:25:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:25:22 --> AdminAuth Filter - Session ID: 06fe40c1e52c996b946fab83eeb56f54
+DEBUG - 2025-12-01 14:25:22 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:25:22 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:25:24 --> AdminAuth Filter - Session ID: 06fe40c1e52c996b946fab83eeb56f54
+DEBUG - 2025-12-01 14:25:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:25:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:29:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:29:32 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:29:32 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:29:32 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:29:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:29:34 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:29:34 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:29:34 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:29:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:29:39 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:29:39 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:29:39 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:29:41 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:29:41 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:29:41 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:30:05 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:30:05 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:30:05 --> AdminAuth: User found in session - ID: 1, Role: admin
+INFO - 2025-12-01 14:30:05 --> Video uploaded successfully: http://localhost/e-learning/uploads/courses/videos/1764599405_27dbe422c4751d46f7bb.mp4
+DEBUG - 2025-12-01 14:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:30:05 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:30:05 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-01 14:30:05 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:30:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:30:42 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:30:42 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:30:42 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:30:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:30:51 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:30:51 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:30:51 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:30:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:30:56 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:30:56 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:30:56 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:31:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:31:00 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:31:00 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:31:00 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:32:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:32:49 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:32:49 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:32:49 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:33:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:33:01 --> AdminAuth Filter - Session ID: e224612a71335360f1e4a62ce9863f71
+DEBUG - 2025-12-01 14:33:01 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:33:01 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:35:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:35:50 --> AdminAuth Filter - Session ID: 4b3f3d9a1c0f2d9afa8fb837171ed194
+DEBUG - 2025-12-01 14:35:50 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:35:50 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:35:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-01 14:35:52 --> Logout attempt for user: admin@elooxacademy.com
+ERROR - 2025-12-01 14:35:52 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-01 14:35:52'
+WHERE `user_id` = '1'
+AND `expires_at` > '2025-12-01 ...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `user_se...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user_se...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user_se...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `user_se...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(860): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(192): CodeIgniter\Model->update()
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->logout()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-01 14:35:52 --> Error deactivating sessions: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-01 14:35:52'
+WHERE `user_id` = '1'
+AND `expires_at` > '2025-12-01 ...' at line 1
+INFO - 2025-12-01 14:35:52 --> Session destroyed, redirecting to login
+DEBUG - 2025-12-01 14:35:52 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-01 14:35:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:08 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-01 14:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:08 --> Login attempt - Email: admin@elooxacademy.com, Method: POST
+INFO - 2025-12-01 14:36:08 --> Session set successfully for user: admin@elooxacademy.com, ID: 1, Role: admin
+INFO - 2025-12-01 14:36:08 --> Session ID: 11ea17a91fb0f59520a09771c79897ac
+DEBUG - 2025-12-01 14:36:08 --> Session data before redirect: {"id":"1","uuid":"9d071a36-6c85-4175-8615-d5a31aa65484","email":"admin@elooxacademy.com","role":"admin","first_name":"Admin","last_name":"User","profile_picture":null,"is_admin":true,"is_instructor":false}
+DEBUG - 2025-12-01 14:36:08 --> Session cookie will be set with path: /
+ERROR - 2025-12-01 14:36:08 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', '64a3afa16c1c8226786bc5fc568a10ebd646f3b5f3cee860726a0127109d9...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(157): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->login()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-01 14:36:08 --> Failed to create session record: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', '64a3afa16c1c8226786bc5fc568a10ebd646f3b5f3cee860726a0127109d9...' at line 1
+INFO - 2025-12-01 14:36:08 --> User logged in: admin@elooxacademy.com
+INFO - 2025-12-01 14:36:08 --> Login successful - Redirecting to dashboard for user: admin@elooxacademy.com
+INFO - 2025-12-01 14:36:08 --> Session verified - User ID: 1, Role: admin
+DEBUG - 2025-12-01 14:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:08 --> AdminAuth Filter - Session ID: 11ea17a91fb0f59520a09771c79897ac
+DEBUG - 2025-12-01 14:36:08 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:36:08 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:13 --> AdminAuth Filter - Session ID: 11ea17a91fb0f59520a09771c79897ac
+DEBUG - 2025-12-01 14:36:13 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:36:13 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:36:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:17 --> AdminAuth Filter - Session ID: 11ea17a91fb0f59520a09771c79897ac
+DEBUG - 2025-12-01 14:36:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:36:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:36:17 --> Profile::index called. User session: exists
+DEBUG - 2025-12-01 14:36:17 --> Profile page loaded for user: admin@elooxacademy.com
+DEBUG - 2025-12-01 14:36:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:25 --> AdminAuth Filter - Session ID: 11ea17a91fb0f59520a09771c79897ac
+DEBUG - 2025-12-01 14:36:25 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:36:25 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-01 14:36:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-01 14:36:29 --> AdminAuth Filter - Session ID: 11ea17a91fb0f59520a09771c79897ac
+DEBUG - 2025-12-01 14:36:29 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-01 14:36:29 --> AdminAuth: User found in session - ID: 1, Role: admin

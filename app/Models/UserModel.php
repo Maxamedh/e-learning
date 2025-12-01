@@ -7,16 +7,15 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
     protected $table            = 'users';
-    protected $primaryKey       = 'user_id';
-    protected $useAutoIncrement = false;
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'user_id', 'email', 'password_hash', 'first_name', 'last_name', 
-        'user_type', 'profile_picture_url', 'bio', 'date_of_birth', 
-        'phone_number', 'country', 'timezone', 'email_verified', 
-        'is_active', 'last_login'
+        'uuid', 'email', 'password_hash', 'role', 'first_name', 'last_name', 
+        'profile_picture', 'phone_number', 'date_of_birth', 'bio', 
+        'is_active', 'email_verified', 'last_login'
     ];
 
     // Dates
@@ -27,10 +26,10 @@ class UserModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'email' => 'required|valid_email|is_unique[users.email,user_id,{user_id}]',
+        'email' => 'required|valid_email|is_unique[users.email,id,{id}]',
         'first_name' => 'required|min_length[2]|max_length[100]',
         'last_name' => 'required|min_length[2]|max_length[100]',
-        'user_type' => 'required|in_list[student,instructor,admin]',
+        'role' => 'required|in_list[student,instructor,admin]',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -38,7 +37,7 @@ class UserModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = ['hashPassword'];
+    protected $beforeInsert   = ['generateUuid', 'hashPassword'];
     protected $afterInsert    = [];
     protected $beforeUpdate   = ['hashPassword'];
     protected $afterUpdate    = [];
@@ -46,6 +45,15 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    protected function generateUuid(array $data)
+    {
+        if (!isset($data['data']['uuid']) || empty($data['data']['uuid'])) {
+            helper('uuid');
+            $data['data']['uuid'] = generate_uuid();
+        }
+        return $data;
+    }
 
     protected function hashPassword(array $data)
     {
@@ -68,12 +76,37 @@ class UserModel extends Model
         return $this->where('email', $email)->first();
     }
 
-    public function getActiveUsers($type = null)
+    public function getUserByUuid($uuid)
+    {
+        return $this->where('uuid', $uuid)->first();
+    }
+
+    public function getActiveUsers($role = null)
     {
         $builder = $this->where('is_active', true);
-        if ($type) {
-            $builder->where('user_type', $type);
+        if ($role) {
+            $builder->where('role', $role);
         }
         return $builder->findAll();
+    }
+
+    public function getUsersByRole($role)
+    {
+        return $this->where('role', $role)->findAll();
+    }
+
+    public function getAdminUsers()
+    {
+        return $this->where('role', 'admin')->where('is_active', true)->findAll();
+    }
+
+    public function getInstructorUsers()
+    {
+        return $this->where('role', 'instructor')->where('is_active', true)->findAll();
+    }
+
+    public function getStudentUsers()
+    {
+        return $this->where('role', 'student')->where('is_active', true)->findAll();
     }
 }

@@ -7,16 +7,19 @@ Url                  : https://www.templaterise.com/template/metrox-ecommerce-ad
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --primary: #41A141;
+    /* E-LOOX Academy Blue Color Scheme */
+    --primary: #1E3A8A; /* Dark blue from logo */
+    --primary-light: #3B82F6; /* Light blue from logo */
     --secondary: #EEEEEE; 
     --sidebar-bg: var(--secondary);
     --main-bg: #ffffff;
-    --chart-gradient-start: #6dd5ed;
-    --chart-gradient-end: #2193b0;
+    --chart-gradient-start: #3B82F6;
+    --chart-gradient-end: #1E3A8A;
     --text-primary: var(--primary);
     --text-secondary:  var(--secondary);
-    --primary-gradient: linear-gradient(270.13deg, #00000080 0.09%, #00000080 88.52%); 
+    --primary-gradient: linear-gradient(270.13deg, #1E3A8A80 0.09%, #3B82F680 88.52%); 
     --btn-primary: var(--primary);
+    --btn-primary-light: var(--primary-light);
     --btn-secondary:  #DEDEDE;
     --blue-zodiac: #3D405C;
     --grey: #898989;

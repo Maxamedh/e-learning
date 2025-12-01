@@ -35,6 +35,7 @@ class Cookie extends BaseConfig
      * --------------------------------------------------------------------------
      *
      * Typically will be a forward slash.
+     * For subdirectory installations, set to the subdirectory path.
      */
     public string $path = '/';
 

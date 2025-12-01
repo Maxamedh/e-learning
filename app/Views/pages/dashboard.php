@@ -25,12 +25,9 @@
                                           <div class="d-flex justify-content-between align-items-start">
                                               <div>
                                                   <div class="stats-label">Total Students</div>
-                                                  <div class="stats-value">10,689</div>
+                                                  <div class="stats-value"><?= number_format($stats['total_students'] ?? 0) ?></div>
                                                   <div class="trend-wrapper">
-                                                      This month 
-                                                      <span class="trend-up">
-                                                          <i class="fas fa-arrow-up"></i> 8.5%
-                                                      </span>
+                                                      Active Students
                                                   </div>
                                               </div>
                                               <div class="icon-wrapper icon-purple">
@@ -46,12 +43,9 @@
                                           <div class="d-flex justify-content-between align-items-start">
                                               <div>
                                                   <div class="stats-label">Total Courses</div>
-                                                  <div class="stats-value">405</div>
+                                                  <div class="stats-value"><?= number_format($stats['total_courses'] ?? 0) ?></div>
                                                   <div class="trend-wrapper">
-                                                      This month 
-                                                      <span class="trend-up">
-                                                          <i class="fas fa-arrow-up"></i> 8.5%
-                                                      </span>
+                                                      Published: <?= number_format($stats['published_courses'] ?? 0) ?>
                                                   </div>
                                               </div>
                                               <div class="icon-wrapper icon-red">
@@ -66,17 +60,50 @@
                                       <div class="stats-card">
                                           <div class="d-flex justify-content-between align-items-start">
                                               <div>
-                                                  <div class="stats-label">Overall Revenue</div>
-                                                  <div class="stats-value">₹64,364</div>
+                                                  <div class="stats-label">Total Revenue</div>
+                                                  <div class="stats-value">$<?= number_format($stats['total_revenue'] ?? 0, 2) ?></div>
                                                   <div class="trend-wrapper">
-                                                      This month 
-                                                      <span class="trend-up">
-                                                          <i class="fas fa-arrow-up"></i> 8.5%
-                                                      </span>
+                                                      Completed Orders: <?= number_format($stats['total_orders'] ?? 0) ?>
                                                   </div>
                                               </div>
                                               <div class="icon-wrapper icon-green">
-                                                  <i class="fas fa-rupee-sign"></i>
+                                                  <i class="fas fa-dollar-sign"></i>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  
+                                  <!-- Total Instructors Card -->
+                                  <div class="col-12 col-md-6 col-lg-12 mb-4">
+                                      <div class="stats-card">
+                                          <div class="d-flex justify-content-between align-items-start">
+                                              <div>
+                                                  <div class="stats-label">Total Instructors</div>
+                                                  <div class="stats-value"><?= number_format($stats['total_instructors'] ?? 0) ?></div>
+                                                  <div class="trend-wrapper">
+                                                      Active Instructors
+                                                  </div>
+                                              </div>
+                                              <div class="icon-wrapper" style="background: rgba(124, 93, 250, 0.1); color: #7C5DFA;">
+                                                  <i class="fas fa-chalkboard-teacher"></i>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  
+                                  <!-- Total Enrollments Card -->
+                                  <div class="col-12 col-md-6 col-lg-12 mb-4">
+                                      <div class="stats-card">
+                                          <div class="d-flex justify-content-between align-items-start">
+                                              <div>
+                                                  <div class="stats-label">Total Enrollments</div>
+                                                  <div class="stats-value"><?= number_format($stats['total_enrollments'] ?? 0) ?></div>
+                                                  <div class="trend-wrapper">
+                                                      All Time
+                                                  </div>
+                                              </div>
+                                              <div class="icon-wrapper" style="background: rgba(75, 222, 151, 0.1); color: #4BDE97;">
+                                                  <i class="fas fa-user-graduate"></i>
                                               </div>
                                           </div>
                                       </div>

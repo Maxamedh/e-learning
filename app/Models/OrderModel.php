@@ -7,38 +7,38 @@ use CodeIgniter\Model;
 class OrderModel extends Model
 {
     protected $table            = 'orders';
-    protected $primaryKey       = 'order_id';
-    protected $useAutoIncrement = false;
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'order_id', 'user_id', 'total_amount', 'discount_amount', 
-        'tax_amount', 'final_amount', 'currency', 'status', 
-        'payment_gateway', 'payment_intent_id', 'completed_at'
-    ];
-
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
-
-    protected array $casts = [
-        'total_amount' => 'float',
-        'discount_amount' => 'float',
-        'tax_amount' => 'float',
-        'final_amount' => 'float',
-        'completed_at' => 'datetime',
+        'order_number', 'user_id', 'total_amount', 'discount_amount', 
+        'final_amount', 'currency', 'status', 
+        'payment_method', 'payment_id'
     ];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
 
     protected $validationRules = [
         'user_id' => 'required',
+        'order_number' => 'required|is_unique[orders.order_number,id,{id}]',
         'status' => 'in_list[pending,completed,failed,refunded]',
     ];
 
-    protected $skipValidation = false;
+    protected $allowCallbacks = true;
+    protected $beforeInsert   = ['generateOrderNumber'];
+
+    protected function generateOrderNumber(array $data)
+    {
+        if (!isset($data['data']['order_number']) || empty($data['data']['order_number'])) {
+            $data['data']['order_number'] = 'ORD-' . strtoupper(uniqid());
+        }
+        return $data;
+    }
 
     public function getOrderWithItems($orderId)
     {
@@ -46,10 +46,23 @@ class OrderModel extends Model
         if ($order) {
             $builder = $this->db->table('order_items oi');
             $builder->select('oi.*, c.title as course_title, c.thumbnail_url');
-            $builder->join('courses c', 'c.course_id = oi.course_id', 'left');
+            $builder->join('courses c', 'c.id = oi.course_id', 'left');
             $builder->where('oi.order_id', $orderId);
             $order['items'] = $builder->get()->getResultArray();
         }
         return $order;
+    }
+
+    public function getOrdersWithUser($limit = null)
+    {
+        $builder = $this->select('orders.*, users.first_name, users.last_name, users.email')
+            ->join('users', 'users.id = orders.user_id', 'left')
+            ->orderBy('orders.created_at', 'DESC');
+        
+        if ($limit) {
+            $builder->limit($limit);
+        }
+        
+        return $builder->findAll();
     }
 }

@@ -7,14 +7,13 @@ use CodeIgniter\Model;
 class CategoryModel extends Model
 {
     protected $table            = 'categories';
-    protected $primaryKey       = 'category_id';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name', 'description', 'parent_category_id', 'slug', 
-        'thumbnail_url', 'is_active'
+        'name', 'description', 'icon', 'parent_id', 'is_active'
     ];
 
     protected $useTimestamps = true;
@@ -24,7 +23,6 @@ class CategoryModel extends Model
 
     protected $validationRules = [
         'name' => 'required|min_length[2]|max_length[100]',
-        'slug' => 'required|is_unique[categories.slug,category_id,{category_id}]',
     ];
 
     public function getActiveCategories()
@@ -35,7 +33,17 @@ class CategoryModel extends Model
     public function getCategoriesWithParent()
     {
         return $this->select('categories.*, parent.name as parent_name')
-            ->join('categories as parent', 'parent.category_id = categories.parent_category_id', 'left')
+            ->join('categories as parent', 'parent.id = categories.parent_id', 'left')
             ->findAll();
+    }
+
+    public function getParentCategories()
+    {
+        return $this->where('parent_id', null)->where('is_active', true)->findAll();
+    }
+
+    public function getSubCategories($parentId)
+    {
+        return $this->where('parent_id', $parentId)->where('is_active', true)->findAll();
     }
 }

@@ -5,10 +5,101 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-// Dashboard
-$routes->get('/', 'Dashboard::index');
 
-// Main Pages
+// Database Setup (Development only)
+$routes->get('setup-database', 'SetupDatabase::index');
+$routes->get('test-login', 'Admin\TestLogin::index');
+$routes->get('debug-login', 'Admin\DebugLogin::test');
+$routes->get('test-session', 'Admin\TestSession::index');
+
+// Admin Authentication (Public)
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+    $routes->get('login', 'AdminAuth::login');
+    $routes->post('login', 'AdminAuth::login');
+    $routes->get('logout', 'AdminAuth::logout');
+    
+    // Setup (only if no admin exists)
+    $routes->get('setup', 'Setup::index');
+    $routes->post('setup/create-admin', 'Setup::createAdmin');
+});
+
+// Admin Routes (Protected)
+$routes->group('admin', ['namespace' => 'App\Controllers', 'filter' => 'adminAuth'], function($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+    $routes->get('/', 'Dashboard::index'); // Redirect admin root to dashboard
+    
+    // Profile & Settings
+    $routes->group('profile', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Profile::index');
+        $routes->post('update', 'Profile::update');
+        $routes->post('change-password', 'Profile::changePassword');
+    });
+    
+    $routes->get('settings', 'Admin\Settings::index');
+    
+    // Course Management
+    $routes->group('courses', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Courses::index');
+        $routes->get('create', 'Courses::create');
+        $routes->post('store', 'Courses::store');
+        $routes->get('view/(:num)', 'Courses::view/$1');
+        $routes->get('edit/(:num)', 'Courses::edit/$1');
+        $routes->post('update/(:num)', 'Courses::update/$1');
+        $routes->get('delete/(:num)', 'Courses::delete/$1');
+    });
+    
+    // Course Sections Management
+    $routes->group('sections', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('(:num)', 'Sections::index/$1');
+        $routes->post('(:num)/store', 'Sections::store/$1');
+        $routes->post('(:num)/update/(:num)', 'Sections::update/$1/$2');
+        $routes->get('(:num)/delete/(:num)', 'Sections::delete/$1/$2');
+    });
+    
+    // Course Lectures Management
+    $routes->group('lectures', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('(:num)', 'Lectures::index/$1');
+        $routes->get('(:num)/(:num)', 'Lectures::index/$1/$2');
+        $routes->post('(:num)/(:num)/store', 'Lectures::store/$1/$2');
+        $routes->post('(:num)/(:num)/update/(:num)', 'Lectures::update/$1/$2/$3');
+        $routes->get('(:num)/(:num)/delete/(:num)', 'Lectures::delete/$1/$2/$3');
+    });
+    
+    // User Management
+    $routes->group('users', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Users::index');
+        $routes->get('create', 'Users::create');
+        $routes->post('store', 'Users::store');
+        $routes->get('edit/(:num)', 'Users::edit/$1');
+        $routes->post('update/(:num)', 'Users::update/$1');
+        $routes->get('delete/(:num)', 'Users::delete/$1');
+    });
+    
+    // Category Management
+    $routes->group('categories', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Categories::index');
+        $routes->post('store', 'Categories::store');
+        $routes->post('update/(:num)', 'Categories::update/$1');
+        $routes->get('delete/(:num)', 'Categories::delete/$1');
+        $routes->get('seed', 'SeedCategories::index');
+    });
+    
+    // Enrollment Management
+    $routes->get('enrollments', 'Admin\Enrollments::index');
+    
+    // Order Management
+    $routes->group('orders', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Orders::index');
+        $routes->get('view/(:num)', 'Orders::view/$1');
+        $routes->post('update-status/(:num)', 'Orders::updateStatus/$1');
+    });
+});
+
+// Public/Client Portal Routes
+$routes->get('/', 'Home::index'); // Public homepage
+$routes->get('/portal', 'Home::index'); // Student portal
+
+// Legacy routes (redirect to admin if logged in as admin)
 $routes->get('/course', 'Course::index');
 $routes->get('/students', 'Students::index');
 $routes->get('/teacher', 'Teacher::index');
@@ -18,7 +109,7 @@ $routes->get('/staff', 'Staff::index');
 $routes->get('/fees', 'Fees::index');
 $routes->get('/course-details', 'CourseDetails::index');
 
-// Auth Pages
+// Auth Pages (Public)
 $routes->get('/login', 'Login::index');
 $routes->get('/signup', 'Signup::index');
 $routes->get('/forgot-password', 'ForgotPassword::index');

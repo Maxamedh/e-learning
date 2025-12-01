@@ -7,15 +7,15 @@ use CodeIgniter\Model;
 class EnrollmentModel extends Model
 {
     protected $table            = 'enrollments';
-    protected $primaryKey       = 'enrollment_id';
-    protected $useAutoIncrement = false;
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'enrollment_id', 'user_id', 'course_id', 'enrolled_at', 
-        'enrollment_type', 'completion_status', 'certificate_issued', 
-        'certificate_issued_at'
+        'user_id', 'course_id', 'enrolled_at', 'completed_at', 
+        'progress_percentage', 'last_accessed_lecture_id', 
+        'certificate_issued', 'certificate_url'
     ];
 
     protected $useTimestamps = false;
@@ -26,13 +26,12 @@ class EnrollmentModel extends Model
     protected $validationRules = [
         'user_id' => 'required',
         'course_id' => 'required',
-        'enrollment_type' => 'in_list[free,paid,trial]',
     ];
 
     public function getUserEnrollments($userId)
     {
         return $this->select('enrollments.*, courses.title, courses.thumbnail_url, courses.instructor_id')
-            ->join('courses', 'courses.course_id = enrollments.course_id')
+            ->join('courses', 'courses.id = enrollments.course_id')
             ->where('enrollments.user_id', $userId)
             ->orderBy('enrollments.enrolled_at', 'DESC')
             ->findAll();
@@ -41,7 +40,7 @@ class EnrollmentModel extends Model
     public function getCourseEnrollments($courseId)
     {
         return $this->select('enrollments.*, users.first_name, users.last_name, users.email')
-            ->join('users', 'users.user_id = enrollments.user_id')
+            ->join('users', 'users.id = enrollments.user_id')
             ->where('enrollments.course_id', $courseId)
             ->findAll();
     }

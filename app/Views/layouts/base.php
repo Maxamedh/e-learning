@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Learn Admin Dashboard</title>
+    <title><?= ($title ?? 'Dashboard') ?> - E-LOOX Academy Admin</title>
     <!-- Stylesheets -->
     <link rel="shortcut icon" href="<?= base_url('assets/images/favicon.ico')?>" type="image/x-icon">
     <link href="<?=base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet">
@@ -206,22 +206,39 @@
                         </li>
                          <!-- User Profile -->
                         <li class="nav-item dropdown user-profile">
-                            <div class="d-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="user-avatar me-0 me-lg-3">A</span>
-                                <div>
-                                    <a href="#" class="d-none d-lg-block">
-                                        <span class="d-block auth-role">Adminitator</span>
-                                        <span class="auth-name">Adin Lauren</span>
-                                        <span class="ms-2 text-color-1 text-size-sm"><i class="fa-solid fa-angle-down"></i></span>
-                                    </a>
-                                    <ul class="dropdown-menu mt-3">
-                                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                                    </ul>
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php 
+                                $user = session()->get('user');
+                                $initials = '';
+                                $profilePicture = null;
+                                if ($user) {
+                                    $initials = strtoupper(substr($user['first_name'] ?? 'A', 0, 1) . substr($user['last_name'] ?? '', 0, 1));
+                                    $profilePicture = $user['profile_picture'] ?? null;
+                                } else {
+                                    $initials = 'A';
+                                }
+                                ?>
+                                <?php if ($profilePicture): ?>
+                                    <img src="<?= esc($profilePicture) ?>" alt="Profile" 
+                                         class="user-avatar me-0 me-lg-3 rounded-circle" 
+                                         style="width: 40px; height: 40px; object-fit: cover;"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                                    <span class="user-avatar me-0 me-lg-3" style="display: none;"><?= $initials ?></span>
+                                <?php else: ?>
+                                    <span class="user-avatar me-0 me-lg-3"><?= $initials ?></span>
+                                <?php endif; ?>
+                                <div class="d-none d-lg-block">
+                                    <span class="d-block auth-role"><?= ucfirst($user['role'] ?? 'Admin') ?></span>
+                                    <span class="auth-name"><?= ($user['first_name'] ?? 'Admin') . ' ' . ($user['last_name'] ?? 'User') ?></span>
+                                    <span class="ms-2 text-color-1 text-size-sm"><i class="fa-solid fa-angle-down"></i></span>
                                 </div>
-                            </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end mt-3">
+                                <li><a class="dropdown-item" href="<?= base_url('admin/profile') ?>"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('admin/settings') ?>"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="<?= base_url('admin/logout') ?>"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
