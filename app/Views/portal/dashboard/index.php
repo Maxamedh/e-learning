@@ -45,6 +45,16 @@
         color: inherit;
     }
     
+    .course-card-pending {
+        border: 1px solid #ffc107;
+        border-radius: 8px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        opacity: 0.8;
+    }
+    
     .progress-bar-container {
         background: #e0e0e0;
         height: 8px;
@@ -100,7 +110,12 @@
         <div class="row g-4">
             <?php foreach ($recentCourses as $enrollment): ?>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="<?= base_url('portal/learn/' . $enrollment['course_id']) ?>" class="course-card">
+                    <?php 
+                    $isPending = !empty($enrollment['order_status']) && $enrollment['order_status'] === 'pending';
+                    $cardClass = $isPending ? 'course-card-pending' : 'course-card';
+                    $cardHref = $isPending ? '#' : base_url('portal/learn/' . $enrollment['course_id']);
+                    ?>
+                    <a href="<?= $cardHref ?>" class="<?= $cardClass ?>" <?= $isPending ? 'onclick="return false;" style="cursor: not-allowed; opacity: 0.7;"' : '' ?>>
                         <?php if (!empty($enrollment['thumbnail_url'])): ?>
                             <img src="<?= esc($enrollment['thumbnail_url']) ?>" alt="<?= esc($enrollment['title']) ?>" 
                                  style="width: 100%; height: 150px; object-fit: cover;">
@@ -113,10 +128,29 @@
                             <h6 class="mb-2" style="font-size: 0.9rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                 <?= esc($enrollment['title']) ?>
                             </h6>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar-fill" style="width: <?= $enrollment['progress_percentage'] ?>%"></div>
-                            </div>
-                            <div class="text-muted small mt-2"><?= number_format($enrollment['progress_percentage'], 0) ?>% Complete</div>
+                            <?php if ($isPending): ?>
+                                <span class="badge bg-warning mb-2">Payment Pending</span>
+                                <p class="text-muted small mb-0" style="font-size: 0.75rem;">Awaiting approval</p>
+                            <?php else: ?>
+                                <div class="progress-bar-container" style="height: 8px; margin-bottom: 8px;">
+                                    <div class="progress-bar-fill" style="width: <?= $enrollment['progress_percentage'] ?? 0 ?>%; transition: width 0.3s ease;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted small">
+                                        <strong><?= number_format($enrollment['progress_percentage'] ?? 0, 0) ?>%</strong> Complete
+                                    </span>
+                                    <?php if (($enrollment['progress_percentage'] ?? 0) >= 100): ?>
+                                        <span class="badge bg-success" style="font-size: 0.65rem;">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if (!empty($enrollment['completed_lectures']) && !empty($enrollment['total_lectures'])): ?>
+                                    <div class="text-muted small" style="font-size: 0.7rem; margin-top: 4px;">
+                                        <?= $enrollment['completed_lectures'] ?>/<?= $enrollment['total_lectures'] ?> lectures
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </div>
                     </a>
                 </div>

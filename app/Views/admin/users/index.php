@@ -35,9 +35,9 @@
                 <div class="col-md-3">
                     <select name="role" class="form-select">
                         <option value="">All Roles</option>
-                        <option value="student" <?= ($role ?? '') == 'student' ? 'selected' : '' ?>>Students</option>
-                        <option value="instructor" <?= ($role ?? '') == 'instructor' ? 'selected' : '' ?>>Instructors</option>
-                        <option value="admin" <?= ($role ?? '') == 'admin' ? 'selected' : '' ?>>Admins</option>
+                        <option value="student" <?= (isset($role) && $role == 'student') ? 'selected' : '' ?>>Students</option>
+                        <option value="instructor" <?= (isset($role) && $role == 'instructor') ? 'selected' : '' ?>>Instructors</option>
+                        <option value="admin" <?= (isset($role) && $role == 'admin') ? 'selected' : '' ?>>Admins</option>
                     </select>
                 </div>
                 <div class="col-md-2">

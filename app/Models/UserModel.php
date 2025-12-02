@@ -58,9 +58,11 @@ class UserModel extends Model
     protected function hashPassword(array $data)
     {
         if (isset($data['data']['password_hash']) && !empty($data['data']['password_hash'])) {
-            // Only hash if it's not already hashed (check length)
-            if (strlen($data['data']['password_hash']) < 60) {
-                $data['data']['password_hash'] = password_hash($data['data']['password_hash'], PASSWORD_DEFAULT);
+            // Only hash if it's not already hashed (bcrypt hashes are 60 chars and start with $2y$)
+            $password = $data['data']['password_hash'];
+            // Check if it's already a bcrypt hash (starts with $2y$ and is 60 chars)
+            if (strlen($password) < 60 || !preg_match('/^\$2[ayb]\$.{56}$/', $password)) {
+                $data['data']['password_hash'] = password_hash($password, PASSWORD_DEFAULT);
             }
         }
         return $data;

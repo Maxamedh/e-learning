@@ -13,7 +13,7 @@ class EnrollmentModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'user_id', 'course_id', 'enrolled_at', 'completed_at', 
+        'user_id', 'course_id', 'order_id', 'enrolled_at', 'completed_at', 
         'progress_percentage', 'last_accessed_lecture_id', 
         'certificate_issued', 'certificate_url'
     ];

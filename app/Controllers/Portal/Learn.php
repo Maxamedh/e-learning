@@ -8,6 +8,7 @@ use App\Models\EnrollmentModel;
 use App\Models\SectionModel;
 use App\Models\LectureModel;
 use App\Models\LectureProgressModel;
+use App\Models\OrderModel;
 
 class Learn extends BaseController
 {
@@ -16,6 +17,7 @@ class Learn extends BaseController
     protected $sectionModel;
     protected $lectureModel;
     protected $progressModel;
+    protected $orderModel;
 
     public function __construct()
     {
@@ -24,6 +26,7 @@ class Learn extends BaseController
         $this->sectionModel = new SectionModel();
         $this->lectureModel = new LectureModel();
         $this->progressModel = new LectureProgressModel();
+        $this->orderModel = new OrderModel();
     }
 
     public function index($courseId)
@@ -42,6 +45,17 @@ class Learn extends BaseController
 
         if (!$enrollment) {
             return redirect()->to('courses/' . $courseId)->with('error', 'You must enroll in this course first.');
+        }
+
+        // Check order status if enrollment has order_id
+        if (!empty($enrollment['order_id'])) {
+            $order = $this->orderModel->find($enrollment['order_id']);
+            if ($order && $order['status'] === 'pending') {
+                return redirect()->to('portal/dashboard')->with('error', 'Your enrollment is pending payment approval. You will be able to access the course once payment is approved.');
+            }
+            if ($order && $order['status'] !== 'completed') {
+                return redirect()->to('portal/dashboard')->with('error', 'Your enrollment payment status is: ' . ucfirst($order['status']) . '. Please contact support.');
+            }
         }
 
         $course = $this->courseModel->getCourseById($courseId);
@@ -111,6 +125,17 @@ class Learn extends BaseController
 
         if (!$enrollment) {
             return redirect()->to('courses/' . $courseId)->with('error', 'You must enroll in this course first.');
+        }
+
+        // Check order status if enrollment has order_id
+        if (!empty($enrollment['order_id'])) {
+            $order = $this->orderModel->find($enrollment['order_id']);
+            if ($order && $order['status'] === 'pending') {
+                return redirect()->to('portal/dashboard')->with('error', 'Your enrollment is pending payment approval. You will be able to access the course once payment is approved.');
+            }
+            if ($order && $order['status'] !== 'completed') {
+                return redirect()->to('portal/dashboard')->with('error', 'Your enrollment payment status is: ' . ucfirst($order['status']) . '. Please contact support.');
+            }
         }
 
         $course = $this->courseModel->getCourseById($courseId);

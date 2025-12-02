@@ -38,11 +38,14 @@ class Categories extends BaseController
         
         $data = [
             'name' => $this->request->getPost('name'),
-            'description' => $this->request->getPost('description'),
-            'icon' => $this->request->getPost('icon'),
+            'description' => $this->request->getPost('description') ?: null,
+            'icon' => $this->request->getPost('icon') ?: null,
             'parent_id' => $this->request->getPost('parent_id') ?: null,
             'is_active' => $this->request->getPost('is_active') ? 1 : 0,
         ];
+        
+        // Skip model validation and use controller validation
+        $this->categoryModel->skipValidation(true);
         
         if ($this->categoryModel->insert($data)) {
             return redirect()->to('admin/categories')->with('success', 'Category created successfully!');
@@ -69,11 +72,14 @@ class Categories extends BaseController
         
         $data = [
             'name' => $this->request->getPost('name'),
-            'description' => $this->request->getPost('description'),
-            'icon' => $this->request->getPost('icon'),
+            'description' => $this->request->getPost('description') ?: null,
+            'icon' => $this->request->getPost('icon') ?: null,
             'parent_id' => $this->request->getPost('parent_id') ?: null,
             'is_active' => $this->request->getPost('is_active') ? 1 : 0,
         ];
+        
+        // Skip model validation and use controller validation
+        $this->categoryModel->skipValidation(true);
         
         if ($this->categoryModel->update($id, $data)) {
             return redirect()->to('admin/categories')->with('success', 'Category updated successfully!');

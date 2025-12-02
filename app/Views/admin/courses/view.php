@@ -301,7 +301,7 @@
                     </div>
                     <div class="detail-item">
                         <i class="fa-solid fa-clock"></i>
-                        <span><strong>Duration:</strong> <?= esc($course['total_duration'] ?? 'N/A') ?></span>
+                        <span><strong>Duration:</strong> <?= !empty($course['duration_hours']) ? esc($course['duration_hours']) . ' hours' : 'N/A' ?></span>
                     </div>
                     <div class="detail-item">
                         <i class="fa-solid fa-video"></i>

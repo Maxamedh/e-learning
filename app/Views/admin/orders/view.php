@@ -49,7 +49,13 @@
                                 <tbody>
                                     <?php foreach ($order['items'] as $item): ?>
                                         <tr>
-                                            <td><?= esc($item['course_title'] ?? 'N/A') ?></td>
+                                            <td>
+                                                <strong><?= esc($item['course_title'] ?? 'N/A') ?></strong>
+                                                <?php if (!empty($item['thumbnail_url'])): ?>
+                                                    <br><img src="<?= esc($item['thumbnail_url']) ?>" alt="<?= esc($item['course_title']) ?>" 
+                                                             style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px; margin-top: 5px;">
+                                                <?php endif; ?>
+                                            </td>
                                             <td>$<?= number_format($item['unit_price'], 2) ?></td>
                                             <td>$<?= number_format($item['discount_price'] ?? 0, 2) ?></td>
                                             <td><strong>$<?= number_format($item['final_price'], 2) ?></strong></td>
@@ -124,15 +130,30 @@
                         <div class="mb-3">
                             <label for="status" class="form-label">Update Status</label>
                             <select class="form-select" id="status" name="status" required>
-                                <option value="pending" <?= $order['status'] == 'pending' ? 'selected' : '' ?>>Pending</option>
-                                <option value="completed" <?= $order['status'] == 'completed' ? 'selected' : '' ?>>Completed</option>
-                                <option value="failed" <?= $order['status'] == 'failed' ? 'selected' : '' ?>>Failed</option>
+                                <option value="pending" <?= $order['status'] == 'pending' ? 'selected' : '' ?>>Pending - Awaiting Approval</option>
+                                <option value="completed" <?= $order['status'] == 'completed' ? 'selected' : '' ?>>Completed - Approve Payment</option>
+                                <option value="failed" <?= $order['status'] == 'failed' ? 'selected' : '' ?>>Failed - Reject Payment</option>
                                 <option value="refunded" <?= $order['status'] == 'refunded' ? 'selected' : '' ?>>Refunded</option>
                             </select>
+                            <small class="text-muted d-block mt-1">
+                                <?php if ($order['status'] == 'pending'): ?>
+                                    <i class="fas fa-info-circle"></i> When you approve (set to Completed), the student will be able to access the course.
+                                <?php elseif ($order['status'] == 'completed'): ?>
+                                    <i class="fas fa-check-circle text-success"></i> Payment approved. Student has access to the course.
+                                <?php endif; ?>
+                            </small>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">
                             <i class="fa-solid fa-save me-2"></i>Update Status
                         </button>
+                        <?php if ($order['status'] == 'pending'): ?>
+                            <button type="button" class="btn btn-success w-100 mt-2" onclick="document.getElementById('status').value='completed'; document.getElementById('status').form.submit();">
+                                <i class="fa-solid fa-check me-2"></i>Approve Payment
+                            </button>
+                            <button type="button" class="btn btn-danger w-100 mt-2" onclick="document.getElementById('status').value='failed'; document.getElementById('status').form.submit();">
+                                <i class="fa-solid fa-times me-2"></i>Reject Payment
+                            </button>
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>

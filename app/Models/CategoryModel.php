@@ -16,9 +16,9 @@ class CategoryModel extends Model
         'name', 'description', 'icon', 'parent_id', 'is_active'
     ];
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = false; // Database handles created_at with DEFAULT CURRENT_TIMESTAMP
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
+    protected $createdField  = null;
     protected $updatedField  = null;
 
     protected $validationRules = [

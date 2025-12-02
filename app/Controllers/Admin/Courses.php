@@ -99,11 +99,28 @@ class Courses extends BaseController
         $thumbnailUrl = $this->request->getPost('thumbnail_url');
         $thumbnailFile = $this->request->getFile('thumbnail');
         if ($thumbnailFile && $thumbnailFile->isValid() && !$thumbnailFile->hasMoved()) {
+            // Ensure directory exists
+            $uploadPath = ROOTPATH . 'public/uploads/courses/thumbnails/';
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+            
             // Move to public directory for web access
             $newName = $thumbnailFile->getRandomName();
-            $thumbnailFile->move(ROOTPATH . 'public/uploads/courses/thumbnails/', $newName);
-            // Construct URL without /public/ - base_url() handles the base path
-            $thumbnailUrl = rtrim(base_url(), '/') . '/uploads/courses/thumbnails/' . $newName;
+            if ($thumbnailFile->move($uploadPath, $newName)) {
+                // Construct URL with /public/ in the path
+                $thumbnailUrl = rtrim(base_url(), '/') . '/public/uploads/courses/thumbnails/' . $newName;
+                
+                // Verify file exists
+                if (!file_exists($uploadPath . $newName)) {
+                    log_message('error', 'Thumbnail file not found after upload: ' . $uploadPath . $newName);
+                } else {
+                    log_message('info', 'Thumbnail uploaded successfully: ' . $thumbnailUrl . ' (Size: ' . filesize($uploadPath . $newName) . ' bytes)');
+                }
+            } else {
+                log_message('error', 'Failed to move thumbnail file: ' . $thumbnailFile->getErrorString());
+                return redirect()->back()->withInput()->with('error', 'Failed to upload thumbnail: ' . $thumbnailFile->getErrorString());
+            }
         }
         
         // Handle promo video upload
@@ -119,8 +136,8 @@ class Courses extends BaseController
             // Move to public directory for web access
             $newName = $promoVideoFile->getRandomName();
             if ($promoVideoFile->move($uploadPath, $newName)) {
-                // Construct URL without /public/ - base_url() handles the base path
-                $promoVideoUrl = rtrim(base_url(), '/') . '/uploads/courses/videos/' . $newName;
+                // Construct URL with /public/ in the path
+                $promoVideoUrl = rtrim(base_url(), '/') . '/public/uploads/courses/videos/' . $newName;
                 // Verify file exists
                 if (!file_exists($uploadPath . $newName)) {
                     log_message('error', 'Video file not found after upload: ' . $uploadPath . $newName);
@@ -145,7 +162,7 @@ class Courses extends BaseController
             'status' => $this->request->getPost('status'),
             'is_free' => $this->request->getPost('is_free') ? 1 : 0,
             'is_featured' => $this->request->getPost('is_featured') ? 1 : 0,
-            'thumbnail_url' => $thumbnailUrl,
+            'thumbnail_url' => $thumbnailUrl ?: null,
             'promo_video_url' => $promoVideoUrl,
         ];
         
@@ -234,11 +251,28 @@ class Courses extends BaseController
         // Handle thumbnail upload
         $thumbnailUrl = $this->request->getPost('thumbnail_url') ?: $course['thumbnail_url'];
         if ($thumbnailFile && $thumbnailFile->isValid() && !$thumbnailFile->hasMoved()) {
+            // Ensure directory exists
+            $uploadPath = ROOTPATH . 'public/uploads/courses/thumbnails/';
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+            
             // Move to public directory for web access
             $newName = $thumbnailFile->getRandomName();
-            $thumbnailFile->move(ROOTPATH . 'public/uploads/courses/thumbnails/', $newName);
-            // Construct URL without /public/ - base_url() handles the base path
-            $thumbnailUrl = rtrim(base_url(), '/') . '/uploads/courses/thumbnails/' . $newName;
+            if ($thumbnailFile->move($uploadPath, $newName)) {
+                // Construct URL with /public/ in the path
+                $thumbnailUrl = rtrim(base_url(), '/') . '/public/uploads/courses/thumbnails/' . $newName;
+                
+                // Verify file exists
+                if (!file_exists($uploadPath . $newName)) {
+                    log_message('error', 'Thumbnail file not found after upload: ' . $uploadPath . $newName);
+                } else {
+                    log_message('info', 'Thumbnail uploaded successfully: ' . $thumbnailUrl . ' (Size: ' . filesize($uploadPath . $newName) . ' bytes)');
+                }
+            } else {
+                log_message('error', 'Failed to move thumbnail file: ' . $thumbnailFile->getErrorString());
+                return redirect()->back()->withInput()->with('error', 'Failed to upload thumbnail: ' . $thumbnailFile->getErrorString());
+            }
         }
         
         // Handle promo video upload
@@ -253,8 +287,8 @@ class Courses extends BaseController
             // Move to public directory for web access
             $newName = $promoVideoFile->getRandomName();
             if ($promoVideoFile->move($uploadPath, $newName)) {
-                // Construct URL without /public/ - base_url() handles the base path
-                $promoVideoUrl = rtrim(base_url(), '/') . '/uploads/courses/videos/' . $newName;
+                // Construct URL with /public/ in the path
+                $promoVideoUrl = rtrim(base_url(), '/') . '/public/uploads/courses/videos/' . $newName;
                 // Verify file exists
                 if (!file_exists($uploadPath . $newName)) {
                     log_message('error', 'Video file not found after upload: ' . $uploadPath . $newName);
@@ -279,7 +313,7 @@ class Courses extends BaseController
             'status' => $this->request->getPost('status'),
             'is_free' => $this->request->getPost('is_free') ? 1 : 0,
             'is_featured' => $this->request->getPost('is_featured') ? 1 : 0,
-            'thumbnail_url' => $thumbnailUrl,
+            'thumbnail_url' => $thumbnailUrl ?: null,
             'promo_video_url' => $promoVideoUrl,
         ];
         

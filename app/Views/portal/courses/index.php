@@ -124,15 +124,18 @@
                     <?php foreach ($courses as $course): ?>
                         <div class="col-6 col-md-4">
                             <a href="<?= base_url('courses/' . $course['id']) ?>" class="course-card">
-                                <?php if (!empty($course['thumbnail_url'])): ?>
-                                    <img src="<?= esc($course['thumbnail_url']) ?>" alt="<?= esc($course['title']) ?>" 
+                                <?php 
+                                $thumbnailUrl = !empty($course['thumbnail_url']) ? esc($course['thumbnail_url']) : '';
+                                ?>
+                                <?php if (!empty($thumbnailUrl)): ?>
+                                    <img src="<?= $thumbnailUrl ?>" 
+                                         alt="<?= esc($course['title']) ?>" 
                                          style="width: 100%; height: 200px; object-fit: cover;"
-                                         onerror="this.src='<?= base_url('assets/images/placeholder-course.jpg') ?>'">
-                                <?php else: ?>
-                                    <div style="height: 200px; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-image fa-3x text-muted"></i>
-                                    </div>
+                                         onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <?php endif; ?>
+                                <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: <?= empty($thumbnailUrl) ? 'flex' : 'none' ?>; align-items: center; justify-content: center; color: #fff;">
+                                    <i class="fas fa-graduation-cap fa-3x"></i>
+                                </div>
                                 <div class="p-3">
                                     <h5 class="course-card-title"><?= esc($course['title']) ?></h5>
                                     <div class="text-muted small mb-2"><?= esc($course['first_name'] . ' ' . $course['last_name']) ?></div>

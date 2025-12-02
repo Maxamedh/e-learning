@@ -1,6 +1,34 @@
 <?= $this->extend('layouts/portal') ?>
 <?= $this->section('content') ?>
 
+<!-- Flash Messages -->
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="container mt-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> <?= session()->getFlashdata('error') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="container mt-3">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('info')): ?>
+    <div class="container mt-3">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('info') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
 <style>
     .course-hero {
         background: #1c1d1f;
@@ -175,7 +203,7 @@
                     <?php endif; ?>
                     <span><i class="fas fa-users"></i> <?= number_format($course['total_students'] ?? 0) ?> students</span>
                     <span><i class="fas fa-signal"></i> <?= ucfirst($course['level']) ?></span>
-                    <span><i class="fas fa-clock"></i> <?= $course['total_duration'] ?? 'N/A' ?></span>
+                    <span><i class="fas fa-clock"></i> <?= !empty($course['duration_hours']) ? $course['duration_hours'] . ' hours' : 'N/A' ?></span>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@ class OrderModel extends Model
 
     protected $validationRules = [
         'user_id' => 'required',
-        'order_number' => 'required|is_unique[orders.order_number,id,{id}]',
+        'order_number' => 'permit_empty|is_unique[orders.order_number,id,{id}]',
         'status' => 'in_list[pending,completed,failed,refunded]',
     ];
 

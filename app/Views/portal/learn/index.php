@@ -270,13 +270,59 @@
         }
     });
     
-    // Track video completion
+    // Track video progress
     if (videoPlayer) {
+        let progressUpdateInterval;
+        
+        // Track video time updates
+        videoPlayer.addEventListener('timeupdate', function() {
+            if (currentLectureId && videoPlayer.duration) {
+                const videoProgress = Math.floor(videoPlayer.currentTime);
+                const totalDuration = Math.floor(videoPlayer.duration);
+                const lastPosition = Math.floor(videoPlayer.currentTime);
+                
+                // Update progress every 5 seconds
+                if (!progressUpdateInterval) {
+                    progressUpdateInterval = setInterval(function() {
+                        updateVideoProgress(currentLectureId, videoProgress, lastPosition, totalDuration);
+                    }, 5000);
+                }
+            }
+        });
+        
+        // Track video completion
         videoPlayer.addEventListener('ended', function() {
             if (currentLectureId) {
+                clearInterval(progressUpdateInterval);
+                progressUpdateInterval = null;
                 markLectureComplete(currentLectureId);
             }
         });
+        
+        // Clear interval when video is paused or stopped
+        videoPlayer.addEventListener('pause', function() {
+            if (progressUpdateInterval) {
+                clearInterval(progressUpdateInterval);
+                progressUpdateInterval = null;
+            }
+        });
+    }
+    
+    function updateVideoProgress(lectureId, videoProgress, lastPosition, totalDuration) {
+        fetch('<?= base_url('api/progress/update') ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                lecture_id: lectureId,
+                course_id: <?= $course['id'] ?>,
+                video_progress: videoProgress,
+                last_position: lastPosition,
+                total_duration: totalDuration
+            })
+        }).catch(err => console.log('Progress update error:', err));
     }
     
     function markLectureComplete(lectureId) {

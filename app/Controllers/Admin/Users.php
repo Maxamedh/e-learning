@@ -19,13 +19,17 @@ class Users extends BaseController
         $role = $this->request->getGet('role');
         $search = $this->request->getGet('search');
         
-        $builder = $this->userModel;
+        // Create a new query builder instance
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
         
-        if ($role) {
+        // Apply role filter
+        if (!empty($role) && $role !== 'all' && $role !== '') {
             $builder->where('role', $role);
         }
         
-        if ($search) {
+        // Apply search filter
+        if (!empty($search)) {
             $builder->groupStart()
                 ->like('first_name', $search)
                 ->orLike('last_name', $search)
@@ -33,13 +37,14 @@ class Users extends BaseController
                 ->groupEnd();
         }
         
-        $users = $builder->orderBy('created_at', 'DESC')->findAll();
+        // Get results
+        $users = $builder->orderBy('created_at', 'DESC')->get()->getResultArray();
         
         $data = [
             'title' => 'Users Management',
             'users' => $users,
-            'role' => $role,
-            'search' => $search,
+            'role' => $role ?? '',
+            'search' => $search ?? '',
         ];
         
         return view('admin/users/index', $data);
@@ -134,6 +139,12 @@ class Users extends BaseController
             'role' => 'required|in_list[student,instructor,admin]',
         ];
         
+        // Add file validation only if file is uploaded
+        $profileFile = $this->request->getFile('profile_picture');
+        if ($profileFile && $profileFile->isValid() && !$profileFile->hasMoved()) {
+            $rules['profile_picture'] = 'uploaded[profile_picture]|max_size[profile_picture,2048]|ext_in[profile_picture,jpg,jpeg,png,gif]';
+        }
+        
         if ($this->request->getPost('password')) {
             $rules['password'] = 'min_length[6]';
         }
@@ -144,11 +155,15 @@ class Users extends BaseController
         
         // Handle profile picture upload
         $profilePictureUrl = $this->request->getPost('profile_picture_url') ?: $user['profile_picture'];
-        $profileFile = $this->request->getFile('profile_picture');
         if ($profileFile && $profileFile->isValid() && !$profileFile->hasMoved()) {
+            $uploadPath = ROOTPATH . 'public/uploads/profiles/';
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
             $newName = $profileFile->getRandomName();
-            $profileFile->move(ROOTPATH . 'public/uploads/profiles/', $newName);
-            $profilePictureUrl = base_url('uploads/profiles/' . $newName);
+            if ($profileFile->move($uploadPath, $newName)) {
+                $profilePictureUrl = rtrim(base_url(), '/') . '/uploads/profiles/' . $newName;
+            }
         }
         
         $data = [
@@ -156,22 +171,28 @@ class Users extends BaseController
             'first_name' => $this->request->getPost('first_name'),
             'last_name' => $this->request->getPost('last_name'),
             'role' => $this->request->getPost('role'),
-            'phone_number' => $this->request->getPost('phone_number'),
+            'phone_number' => $this->request->getPost('phone_number') ?: null,
             'date_of_birth' => $this->request->getPost('date_of_birth') ?: null,
             'profile_picture' => $profilePictureUrl,
-            'bio' => $this->request->getPost('bio'),
+            'bio' => $this->request->getPost('bio') ?: null,
             'is_active' => $this->request->getPost('is_active') ? 1 : 0,
             'email_verified' => $this->request->getPost('email_verified') ? 1 : 0,
         ];
         
+        // Only update password if provided
         if ($this->request->getPost('password')) {
             $data['password_hash'] = $this->request->getPost('password');
         }
         
+        // Skip model validation and use controller validation instead
+        $this->userModel->skipValidation(true);
+        
         if ($this->userModel->update($id, $data)) {
             return redirect()->to('admin/users')->with('success', 'User updated successfully!');
         } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to update user.');
+            $errors = $this->userModel->errors();
+            log_message('error', 'User update failed: ' . json_encode($errors));
+            return redirect()->back()->withInput()->with('error', 'Failed to update user: ' . implode(', ', $errors));
         }
     }
 

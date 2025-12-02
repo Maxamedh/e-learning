@@ -59,15 +59,47 @@
                             <div class="col-md-7">
                                 <h5 class="mb-2"><?= esc($enrollment['title']) ?></h5>
                                 <p class="text-muted mb-2"><?= esc($enrollment['first_name'] . ' ' . $enrollment['last_name']) ?></p>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar-fill" style="width: <?= $enrollment['progress_percentage'] ?>%"></div>
-                                </div>
-                                <div class="text-muted small mt-2"><?= number_format($enrollment['progress_percentage'], 0) ?>% Complete</div>
+                                <?php if (!empty($enrollment['order_status']) && $enrollment['order_status'] === 'pending'): ?>
+                                    <span class="badge bg-warning mb-2">Payment Pending</span>
+                                    <p class="text-muted small mb-2">Your enrollment is pending payment approval. You will be able to access the course once payment is approved.</p>
+                                <?php else: ?>
+                                    <div class="d-flex align-items-center gap-3 mb-2">
+                                        <div class="flex-grow-1">
+                                            <div class="progress-bar-container" style="height: 10px;">
+                                                <div class="progress-bar-fill" style="width: <?= $enrollment['progress_percentage'] ?? 0 ?>%; transition: width 0.3s ease;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-muted small" style="min-width: 60px; text-align: right;">
+                                            <strong><?= number_format($enrollment['progress_percentage'] ?? 0, 1) ?>%</strong>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>
+                                            <i class="fas fa-check-circle text-success me-1"></i>
+                                            <?= $enrollment['completed_lectures'] ?? 0 ?> of <?= $enrollment['total_lectures'] ?? 0 ?> lectures completed
+                                        </span>
+                                        <?php if (($enrollment['progress_percentage'] ?? 0) >= 100): ?>
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-trophy me-1"></i>Completed
+                                            </span>
+                                        <?php elseif (($enrollment['progress_percentage'] ?? 0) > 0): ?>
+                                            <span class="badge bg-primary">In Progress</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary">Not Started</span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-3 text-end">
-                                <a href="<?= base_url('portal/learn/' . $enrollment['course_id']) ?>" class="btn btn-primary">
-                                    <?= $enrollment['progress_percentage'] > 0 ? 'Continue Learning' : 'Start Learning' ?>
-                                </a>
+                                <?php if (!empty($enrollment['order_status']) && $enrollment['order_status'] === 'pending'): ?>
+                                    <button class="btn btn-secondary" disabled title="Payment pending approval">
+                                        <i class="fas fa-clock me-2"></i>Pending Approval
+                                    </button>
+                                <?php else: ?>
+                                    <a href="<?= base_url('portal/learn/' . $enrollment['course_id']) ?>" class="btn btn-primary">
+                                        <?= $enrollment['progress_percentage'] > 0 ? 'Continue Learning' : 'Start Learning' ?>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

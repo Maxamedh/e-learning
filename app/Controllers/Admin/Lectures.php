@@ -100,8 +100,8 @@ class Lectures extends BaseController
                 if ($videoFile->move($uploadPath, $newName)) {
                     // Verify file was actually moved and exists
                     if (file_exists($fullPath) && filesize($fullPath) > 0) {
-                        // Construct URL without /public/ - base_url() handles the base path
-                        $videoUrl = rtrim(base_url(), '/') . '/uploads/courses/lectures/' . $newName;
+                        // Construct URL with /public/ in the path
+                        $videoUrl = rtrim(base_url(), '/') . '/public/uploads/courses/lectures/' . $newName;
                         log_message('info', 'Lecture video uploaded successfully: ' . $videoUrl . ' (Size: ' . filesize($fullPath) . ' bytes)');
                     } else {
                         log_message('error', 'Video file not found or empty after move: ' . $fullPath);
@@ -186,8 +186,8 @@ class Lectures extends BaseController
                 if ($videoFile->move($uploadPath, $newName)) {
                     // Verify file was actually moved and exists
                     if (file_exists($fullPath) && filesize($fullPath) > 0) {
-                        // Construct URL without /public/ - base_url() handles the base path
-                        $videoUrl = rtrim(base_url(), '/') . '/uploads/courses/lectures/' . $newName;
+                        // Construct URL with /public/ in the path
+                        $videoUrl = rtrim(base_url(), '/') . '/public/uploads/courses/lectures/' . $newName;
                         log_message('info', 'Lecture video updated successfully: ' . $videoUrl . ' (Size: ' . filesize($fullPath) . ' bytes)');
                     } else {
                         log_message('error', 'Video file not found or empty after move: ' . $fullPath);

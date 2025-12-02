@@ -65,6 +65,12 @@
         width: 100%;
         height: 200px;
         object-fit: cover;
+        background: #f0f0f0;
+    }
+    
+    .course-card img[src=""],
+    .course-card img:not([src]) {
+        display: none;
     }
     
     .course-card-body {
@@ -182,32 +188,38 @@
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="<?= base_url('courses/' . $course['id']) ?>" class="text-decoration-none">
                         <div class="course-card">
-                            <?php if (!empty($course['thumbnail_url'])): ?>
-                                <img src="<?= esc($course['thumbnail_url']) ?>" alt="<?= esc($course['title']) ?>" onerror="this.src='<?= base_url('assets/images/placeholder-course.jpg') ?>'">
-                            <?php else: ?>
-                                <div style="height: 200px; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-image fa-3x text-muted"></i>
-                                </div>
+                            <?php 
+                            $thumbnailUrl = !empty($course['thumbnail_url']) ? esc($course['thumbnail_url']) : '';
+                            ?>
+                            <?php if (!empty($thumbnailUrl)): ?>
+                                <img src="<?= $thumbnailUrl ?>" 
+                                     alt="<?= esc($course['title']) ?>" 
+                                     style="width: 100%; height: 200px; object-fit: cover;"
+                                     loading="lazy"
+                                     onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <?php endif; ?>
+                            <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: <?= empty($thumbnailUrl) ? 'flex' : 'none' ?>; align-items: center; justify-content: center; color: #fff;">
+                                <i class="fas fa-graduation-cap fa-3x"></i>
+                            </div>
                             <div class="course-card-body">
                                 <h5 class="course-card-title"><?= esc($course['title']) ?></h5>
                                 <div class="course-card-instructor"><?= esc($course['instructor_name'] ?? 'Instructor') ?></div>
-                                <?php if ($course['avg_rating'] > 0): ?>
+                                <?php if (isset($course['avg_rating']) && $course['avg_rating'] > 0): ?>
                                     <div class="course-card-rating">
                                         <span class="text-warning"><?= number_format($course['avg_rating'], 1) ?></span>
                                         <i class="fas fa-star text-warning"></i>
-                                        <span class="text-muted">(<?= number_format($course['total_reviews']) ?>)</span>
+                                        <span class="text-muted">(<?= number_format($course['total_reviews'] ?? 0) ?>)</span>
                                     </div>
                                 <?php endif; ?>
                                 <div class="course-card-price">
-                                    <?php if ($course['is_free']): ?>
+                                    <?php if (!empty($course['is_free'])): ?>
                                         <span class="text-success">FREE</span>
                                     <?php else: ?>
-                                        <?php if ($course['discount_price']): ?>
-                                            <span class="text-decoration-line-through text-muted me-2">$<?= number_format($course['price'], 2) ?></span>
+                                        <?php if (!empty($course['discount_price'])): ?>
+                                            <span class="text-decoration-line-through text-muted me-2">$<?= number_format($course['price'] ?? 0, 2) ?></span>
                                             <span class="text-danger">$<?= number_format($course['discount_price'], 2) ?></span>
                                         <?php else: ?>
-                                            $<?= number_format($course['price'], 2) ?>
+                                            $<?= number_format($course['price'] ?? 0, 2) ?>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
@@ -232,32 +244,38 @@
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="<?= base_url('courses/' . $course['id']) ?>" class="text-decoration-none">
                         <div class="course-card">
-                            <?php if (!empty($course['thumbnail_url'])): ?>
-                                <img src="<?= esc($course['thumbnail_url']) ?>" alt="<?= esc($course['title']) ?>" onerror="this.src='<?= base_url('assets/images/placeholder-course.jpg') ?>'">
-                            <?php else: ?>
-                                <div style="height: 200px; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-image fa-3x text-muted"></i>
-                                </div>
+                            <?php 
+                            $thumbnailUrl = !empty($course['thumbnail_url']) ? esc($course['thumbnail_url']) : '';
+                            ?>
+                            <?php if (!empty($thumbnailUrl)): ?>
+                                <img src="<?= $thumbnailUrl ?>" 
+                                     alt="<?= esc($course['title']) ?>" 
+                                     style="width: 100%; height: 200px; object-fit: cover;"
+                                     loading="lazy"
+                                     onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <?php endif; ?>
+                            <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: <?= empty($thumbnailUrl) ? 'flex' : 'none' ?>; align-items: center; justify-content: center; color: #fff;">
+                                <i class="fas fa-graduation-cap fa-3x"></i>
+                            </div>
                             <div class="course-card-body">
                                 <h5 class="course-card-title"><?= esc($course['title']) ?></h5>
                                 <div class="course-card-instructor"><?= esc($course['instructor_name'] ?? 'Instructor') ?></div>
-                                <?php if ($course['avg_rating'] > 0): ?>
+                                <?php if (isset($course['avg_rating']) && $course['avg_rating'] > 0): ?>
                                     <div class="course-card-rating">
                                         <span class="text-warning"><?= number_format($course['avg_rating'], 1) ?></span>
                                         <i class="fas fa-star text-warning"></i>
-                                        <span class="text-muted">(<?= number_format($course['total_reviews']) ?>)</span>
+                                        <span class="text-muted">(<?= number_format($course['total_reviews'] ?? 0) ?>)</span>
                                     </div>
                                 <?php endif; ?>
                                 <div class="course-card-price">
-                                    <?php if ($course['is_free']): ?>
+                                    <?php if (!empty($course['is_free'])): ?>
                                         <span class="text-success">FREE</span>
                                     <?php else: ?>
-                                        <?php if ($course['discount_price']): ?>
-                                            <span class="text-decoration-line-through text-muted me-2">$<?= number_format($course['price'], 2) ?></span>
+                                        <?php if (!empty($course['discount_price'])): ?>
+                                            <span class="text-decoration-line-through text-muted me-2">$<?= number_format($course['price'] ?? 0, 2) ?></span>
                                             <span class="text-danger">$<?= number_format($course['discount_price'], 2) ?></span>
                                         <?php else: ?>
-                                            $<?= number_format($course['price'], 2) ?>
+                                            $<?= number_format($course['price'] ?? 0, 2) ?>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </div>

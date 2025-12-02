@@ -9,6 +9,8 @@ use App\Models\EnrollmentModel;
 use App\Models\SectionModel;
 use App\Models\LectureModel;
 use App\Models\UserModel;
+use App\Models\OrderModel;
+use App\Models\OrderItemModel;
 
 class Courses extends BaseController
 {
@@ -18,6 +20,8 @@ class Courses extends BaseController
     protected $sectionModel;
     protected $lectureModel;
     protected $userModel;
+    protected $orderModel;
+    protected $orderItemModel;
 
     public function __construct()
     {
@@ -27,6 +31,8 @@ class Courses extends BaseController
         $this->sectionModel = new SectionModel();
         $this->lectureModel = new LectureModel();
         $this->userModel = new UserModel();
+        $this->orderModel = new OrderModel();
+        $this->orderItemModel = new OrderItemModel();
     }
 
     public function index()
@@ -183,23 +189,104 @@ class Courses extends BaseController
             return redirect()->to('portal/learn/' . $id)->with('info', 'You are already enrolled in this course.');
         }
 
-        // Create enrollment
-        $enrollmentData = [
-            'user_id' => $user['id'],
-            'course_id' => $id,
-            'enrolled_at' => date('Y-m-d H:i:s'),
-            'progress_percentage' => 0,
-        ];
+        // Calculate course price
+        $coursePrice = $course['is_free'] ? 0 : ($course['discount_price'] ?? $course['price'] ?? 0);
+        $finalAmount = $coursePrice;
 
-        if ($this->enrollmentModel->insert($enrollmentData)) {
+        // Start database transaction
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        try {
+            // Generate order number
+            $orderNumber = 'ORD-' . strtoupper(uniqid());
+            
+            // Create order with pending status
+            $orderData = [
+                'order_number' => $orderNumber,
+                'user_id' => $user['id'],
+                'total_amount' => $coursePrice,
+                'discount_amount' => 0,
+                'final_amount' => $finalAmount,
+                'currency' => 'USD',
+                'status' => 'pending',
+                'payment_method' => 'manual',
+            ];
+
+            // Validate order data
+            if (!$this->orderModel->insert($orderData)) {
+                $errors = $this->orderModel->errors();
+                $errorMsg = 'Failed to create order. ';
+                if (!empty($errors)) {
+                    $errorMsg .= implode(', ', array_values($errors));
+                } else {
+                    $errorMsg .= 'Please check your input and try again.';
+                }
+                throw new \Exception($errorMsg);
+            }
+
+            $orderId = $this->orderModel->insertID();
+            
+            if (empty($orderId)) {
+                throw new \Exception('Failed to get order ID after creation.');
+            }
+
+            // Create order item
+            $orderItemData = [
+                'order_id' => $orderId,
+                'course_id' => $id,
+                'unit_price' => $course['price'] ?? 0,
+                'discount_price' => ($course['price'] ?? 0) - $coursePrice,
+                'final_price' => $coursePrice,
+            ];
+
+            if (!$this->orderItemModel->insert($orderItemData)) {
+                $errors = $this->orderItemModel->errors();
+                $errorMsg = 'Failed to create order item. ';
+                if (!empty($errors)) {
+                    $errorMsg .= implode(', ', array_values($errors));
+                } else {
+                    $errorMsg .= 'Please try again.';
+                }
+                throw new \Exception($errorMsg);
+            }
+
+            // Create enrollment linked to order
+            $enrollmentData = [
+                'user_id' => $user['id'],
+                'course_id' => $id,
+                'order_id' => $orderId,
+                'enrolled_at' => date('Y-m-d H:i:s'),
+                'progress_percentage' => 0,
+            ];
+
+            if (!$this->enrollmentModel->insert($enrollmentData)) {
+                $errors = $this->enrollmentModel->errors();
+                $errorMsg = 'Failed to create enrollment. ';
+                if (!empty($errors)) {
+                    $errorMsg .= implode(', ', array_values($errors));
+                } else {
+                    $errorMsg .= 'Please try again.';
+                }
+                throw new \Exception($errorMsg);
+            }
+
             // Update course student count
             $this->courseModel->update($id, [
                 'total_students' => ($course['total_students'] ?? 0) + 1
             ]);
 
-            return redirect()->to('portal/learn/' . $id)->with('success', 'Successfully enrolled in course!');
-        } else {
-            return redirect()->back()->with('error', 'Failed to enroll in course. Please try again.');
+            $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                return redirect()->back()->with('error', 'Failed to enroll in course. Please try again.');
+            }
+
+            return redirect()->to('portal/dashboard')->with('success', 'Enrollment request submitted! Your payment is pending approval. You will be able to access the course once payment is approved.');
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            return redirect()->back()->with('error', 'Failed to enroll in course: ' . $e->getMessage());
         }
     }
 }

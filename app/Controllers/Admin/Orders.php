@@ -4,14 +4,17 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\OrderModel;
+use App\Models\EnrollmentModel;
 
 class Orders extends BaseController
 {
     protected $orderModel;
+    protected $enrollmentModel;
 
     public function __construct()
     {
         $this->orderModel = new OrderModel();
+        $this->enrollmentModel = new EnrollmentModel();
     }
 
     public function index()
@@ -77,8 +80,19 @@ class Orders extends BaseController
             return redirect()->back()->with('error', 'Invalid status.');
         }
         
-        if ($this->orderModel->update($id, ['status' => $status])) {
-            return redirect()->back()->with('success', 'Order status updated successfully!');
+        $updateData = ['status' => $status];
+        
+        // If status is being changed to completed, set completed_at timestamp
+        if ($status === 'completed' && $order['status'] !== 'completed') {
+            $updateData['completed_at'] = date('Y-m-d H:i:s');
+        }
+        
+        if ($this->orderModel->update($id, $updateData)) {
+            // When order is completed, enrollment is automatically activated
+            // because the Learn controller checks order status
+            // No additional action needed as enrollment is already linked to order
+            
+            return redirect()->back()->with('success', 'Order status updated successfully! ' . ($status === 'completed' ? 'The student can now access the course.' : ''));
         } else {
             return redirect()->back()->with('error', 'Failed to update order status.');
         }

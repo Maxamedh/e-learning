@@ -86,6 +86,9 @@ $routes->group('admin', ['namespace' => 'App\Controllers', 'filter' => 'adminAut
     
     // Enrollment Management
     $routes->get('enrollments', 'Admin\Enrollments::index');
+    $routes->get('enrollments/create', 'Admin\Enrollments::create');
+    $routes->post('enrollments/store', 'Admin\Enrollments::store');
+    $routes->get('enrollments/delete/(:num)', 'Admin\Enrollments::delete/$1');
     
     // Order Management
     $routes->group('orders', ['namespace' => 'App\Controllers\Admin'], function($routes) {
@@ -168,6 +171,11 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) 
     $routes->post('enrollments', 'EnrollmentApiController::create');
     $routes->put('enrollments/(:segment)', 'EnrollmentApiController::update/$1');
     $routes->delete('enrollments/(:segment)', 'EnrollmentApiController::delete/$1');
+    
+    // Progress Tracking
+    $routes->post('progress/start', 'ProgressController::start');
+    $routes->post('progress/update', 'ProgressController::update');
+    $routes->post('progress/complete', 'ProgressController::complete');
     
     // Order CRUD
     $routes->get('orders', 'OrderApiController::index');

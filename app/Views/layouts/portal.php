@@ -47,6 +47,14 @@
             object-fit: contain;
         }
         
+        .portal-header .navbar-brand .logo-fallback {
+            display: none;
+        }
+        
+        .portal-header .navbar-brand img[style*="display: none"] + .logo-fallback {
+            display: inline-block !important;
+        }
+        
         .portal-header .nav-link {
             color: var(--text-dark);
             font-weight: 400;
@@ -117,10 +125,27 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="<?= base_url() ?>">
-                    <img src="<?= base_url('assets/images/logo@3x-100.jpg') ?>" alt="E-LOOX Academy" 
+                    <?php 
+                    // Try multiple logo paths to ensure logo displays correctly
+                    $logoPaths = [
+                        'assets/images/logo@3x-100.jpg',
+                        'assets/images/logo-3x-100.jpg',
+                        'assets/images/logo.png'
+                    ];
+                    $logoPath = $logoPaths[0]; // Default
+                    foreach ($logoPaths as $path) {
+                        $fullPath = FCPATH . str_replace('/', DIRECTORY_SEPARATOR, $path);
+                        if (file_exists($fullPath)) {
+                            // Handle special characters in filename like @
+                            $logoPath = dirname($path) . '/' . rawurlencode(basename($path));
+                            break;
+                        }
+                    }
+                    ?>
+                    <img src="<?= base_url($logoPath) ?>" alt="E-LOOX Academy" 
                          style="height: 50px; width: auto; max-width: 200px; object-fit: contain;" 
                          onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-                    <span style="display: none; font-weight: 700; color: var(--primary-blue); font-size: 1.5rem;">E-LOOX Academy</span>
+                    <span class="logo-fallback" style="display: none; font-weight: 700; color: var(--primary-blue); font-size: 1.5rem;">E-LOOX Academy</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>

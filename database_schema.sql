@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS enrollments (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     course_id INT NOT NULL,
+    order_id INT NULL,
     enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     completed_at TIMESTAMP NULL,
     progress_percentage DECIMAL(5,2) DEFAULT 0,
@@ -132,9 +133,11 @@ CREATE TABLE IF NOT EXISTS enrollments (
     UNIQUE KEY unique_enrollment (user_id, course_id),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE SET NULL,
     FOREIGN KEY (last_accessed_lecture_id) REFERENCES lectures(id) ON DELETE SET NULL,
     INDEX idx_user_id (user_id),
-    INDEX idx_course_id (course_id)
+    INDEX idx_course_id (course_id),
+    INDEX idx_order_id (order_id)
 );
 
 CREATE TABLE IF NOT EXISTS lecture_progress (
