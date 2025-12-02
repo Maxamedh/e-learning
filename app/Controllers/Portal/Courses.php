@@ -11,6 +11,7 @@ use App\Models\LectureModel;
 use App\Models\UserModel;
 use App\Models\OrderModel;
 use App\Models\OrderItemModel;
+use App\Models\NotificationModel;
 
 class Courses extends BaseController
 {
@@ -22,6 +23,7 @@ class Courses extends BaseController
     protected $userModel;
     protected $orderModel;
     protected $orderItemModel;
+    protected $notificationModel;
 
     public function __construct()
     {
@@ -33,6 +35,7 @@ class Courses extends BaseController
         $this->userModel = new UserModel();
         $this->orderModel = new OrderModel();
         $this->orderItemModel = new OrderItemModel();
+        $this->notificationModel = new NotificationModel();
     }
 
     public function index()
@@ -275,6 +278,21 @@ class Courses extends BaseController
             $this->courseModel->update($id, [
                 'total_students' => ($course['total_students'] ?? 0) + 1
             ]);
+
+            // Create notifications for all admin users
+            $adminUsers = $this->userModel->where('role', 'admin')->findAll();
+            foreach ($adminUsers as $admin) {
+                $notificationData = [
+                    'user_id' => $admin['id'],
+                    'title' => 'New Order Pending Approval',
+                    'message' => "A new order (#{$orderNumber}) has been created by {$user['first_name']} {$user['last_name']} for course: {$course['title']}. Amount: $" . number_format($finalAmount, 2) . ". Please review and approve.",
+                    'type' => 'payment',
+                    'related_entity_type' => 'order',
+                    'related_entity_id' => $orderId,
+                    'is_read' => false,
+                ];
+                $this->notificationModel->insert($notificationData);
+            }
 
             $db->transComplete();
 

@@ -79,8 +79,8 @@
                     <p>Discussions & Notifications <i class="fa-solid fa-chevron-right right-icon"></i></p>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('discussions') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Discussions</p></a></li>
-                    <li><a href="<?= base_url('notifications') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Notifications</p></a></li>
+                    <li><a href="<?= base_url('admin/discussions') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Discussions</p></a></li>
+                    <li><a href="<?= base_url('admin/notifications') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Notifications</p></a></li>
                 </ul>
             </li>
 

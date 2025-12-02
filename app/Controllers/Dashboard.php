@@ -6,6 +6,7 @@ use App\Models\CourseModel;
 use App\Models\EnrollmentModel;
 use App\Models\OrderModel;
 use App\Models\CategoryModel;
+use App\Models\NotificationModel;
 
 class Dashboard extends BaseController
 {
@@ -14,6 +15,7 @@ class Dashboard extends BaseController
     protected $enrollmentModel;
     protected $orderModel;
     protected $categoryModel;
+    protected $notificationModel;
 
     public function __construct()
     {
@@ -22,6 +24,7 @@ class Dashboard extends BaseController
         $this->enrollmentModel = new EnrollmentModel();
         $this->orderModel = new OrderModel();
         $this->categoryModel = new CategoryModel();
+        $this->notificationModel = new NotificationModel();
     }
 
     public function index()
@@ -34,6 +37,8 @@ class Dashboard extends BaseController
             'recentEnrollments' => $this->getRecentEnrollments(),
             'recentOrders' => $this->getRecentOrders(),
             'topCourses' => $this->getTopCourses(),
+            'recentNotifications' => $this->getRecentNotifications(),
+            'unreadNotificationCount' => $this->getUnreadNotificationCount(),
         ];
         
         return view('pages/dashboard', $data);
@@ -97,6 +102,39 @@ class Dashboard extends BaseController
             ->orderBy('courses.avg_rating', 'DESC')
             ->limit($limit)
             ->findAll();
+    }
+
+    private function getRecentNotifications($limit = 5)
+    {
+        // Get all admin users
+        $adminUsers = $this->userModel->where('role', 'admin')->findAll();
+        $adminIds = array_column($adminUsers, 'id');
+
+        if (empty($adminIds)) {
+            return [];
+        }
+
+        return $this->notificationModel->select('notifications.*, users.first_name, users.last_name')
+            ->join('users', 'users.id = notifications.user_id', 'left')
+            ->whereIn('notifications.user_id', $adminIds)
+            ->orderBy('notifications.sent_at', 'DESC')
+            ->limit($limit)
+            ->findAll();
+    }
+
+    private function getUnreadNotificationCount()
+    {
+        // Get all admin users
+        $adminUsers = $this->userModel->where('role', 'admin')->findAll();
+        $adminIds = array_column($adminUsers, 'id');
+
+        if (empty($adminIds)) {
+            return 0;
+        }
+
+        return $this->notificationModel->whereIn('user_id', $adminIds)
+            ->where('is_read', false)
+            ->countAllResults();
     }
 }
 

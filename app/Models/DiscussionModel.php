@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class DiscussionModel extends Model
 {
     protected $table            = 'discussions';
-    protected $primaryKey       = 'discussion_id';
-    protected $useAutoIncrement = false;
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'discussion_id', 'course_id', 'user_id', 'title', 'content', 
-        'post_type', 'is_pinned', 'is_resolved', 'view_count'
+        'course_id', 'user_id', 'title', 'content', 
+        'is_question', 'is_pinned', 'is_resolved', 'upvotes', 'downvotes'
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -36,7 +36,7 @@ class DiscussionModel extends Model
         'user_id' => 'required',
         'title' => 'required|min_length[3]|max_length[300]',
         'content' => 'required',
-        'post_type' => 'in_list[question,discussion,announcement]',
+        'is_question' => 'permit_empty',
     ];
 
     protected $skipValidation = false;
@@ -44,8 +44,8 @@ class DiscussionModel extends Model
     public function getDiscussionsWithUser($courseId, $limit = null)
     {
         $builder = $this->db->table('discussions d');
-        $builder->select('d.*, u.first_name, u.last_name, u.profile_picture_url, u.user_type');
-        $builder->join('users u', 'u.user_id = d.user_id', 'left');
+        $builder->select('d.*, u.first_name, u.last_name, u.profile_picture, u.role');
+        $builder->join('users u', 'u.id = d.user_id', 'left');
         $builder->where('d.course_id', $courseId);
         $builder->orderBy('d.is_pinned', 'DESC');
         $builder->orderBy('d.created_at', 'DESC');

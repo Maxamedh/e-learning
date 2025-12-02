@@ -42,166 +42,208 @@
                 <div class="d-flex align-items-center">
                     <ul class="nav d-flex align-items-center">
                         <!-- Messages Dropdown -->
+                        <?php
+                        // Load recent discussion replies as messages
+                        $db = \Config\Database::connect();
+                        $tables = $db->listTables();
+                        $recentMessages = [];
+                        
+                        try {
+                            if (in_array('discussion_replies', $tables)) {
+                                $discussionReplyModel = new \App\Models\DiscussionReplyModel();
+                                $builder = $db->table('discussion_replies');
+                                $builder->select('discussion_replies.*, discussions.title as discussion_title, users.first_name, users.last_name, users.profile_picture');
+                                $builder->join('discussions', 'discussions.id = discussion_replies.discussion_id', 'left');
+                                $builder->join('users', 'users.id = discussion_replies.user_id', 'left');
+                                $builder->orderBy('discussion_replies.created_at', 'DESC');
+                                $builder->limit(5);
+                                $recentMessages = $builder->get()->getResultArray();
+                            } else {
+                                // Use discussions table with parent_id
+                                $builder = $db->table('discussions');
+                                $builder->select('discussions.*, parent.title as discussion_title, users.first_name, users.last_name, users.profile_picture');
+                                $builder->join('discussions as parent', 'parent.id = discussions.parent_id', 'left');
+                                $builder->join('users', 'users.id = discussions.user_id', 'left');
+                                $builder->where('discussions.parent_id IS NOT NULL');
+                                $builder->orderBy('discussions.created_at', 'DESC');
+                                $builder->limit(5);
+                                $recentMessages = $builder->get()->getResultArray();
+                            }
+                        } catch (\Exception $e) {
+                            // If there's an error, just show empty messages
+                            $recentMessages = [];
+                        }
+                        ?>
                         <li class="nav-item me-2-5">
                             <a href="#" class="text-color-1 position-relative"  role="button" 
                             data-bs-toggle="dropdown" 
                             data-bs-offset="0,0" 
                             aria-expanded="false">
                             <i class="fa-regular fa-message font-size-24"></i>
+                            <?php if (count($recentMessages) > 0): ?>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                                    <?= count($recentMessages) ?>
+                                </span>
+                            <?php endif; ?>
                         </a>
                             <div class="dropdown-menu dropdown-menu-end mt-4">
                                 <div id="chatmessage" class="h-380 scroll-y p-3 custom-scrollbar">
                                     <!-- Chat Timeline -->
-                                    <ul class="timeline">
-                                        <!-- Item 1 -->
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/avatar-1.jpg">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">We talked about a project...</h6>
-                                                    <small class="d-block"><i class="fa-solid fa-clock"></i> 30 min ago</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Item 2 -->
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/avatar-2.jpg">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">You sent an email to the client...</h6>
-                                                    <small class="d-block"><i class="fa-solid fa-clock"></i> 1 hour ago</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Item 3 -->
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/avatar-3.jpg">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Meeting with the design team...</h6>
-                                                    <small class="d-block"><i class="fa-solid fa-clock"></i> 2 hours ago</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Item 4 -->
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/avatar-4.jpg">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Reviewed the project documents...</h6>
-                                                    <small class="d-block"><i class="fa-solid fa-clock"></i> Yesterday</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Item 5 -->
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/avatar-5.jpg">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Finalized the project timeline...</h6>
-                                                    <small class="d-block"><i class="fa-solid fa-clock"></i> 2 days ago</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <?php if (empty($recentMessages)): ?>
+                                        <div class="text-center py-4 text-muted">
+                                            <i class="fas fa-inbox fa-2x mb-2"></i>
+                                            <p class="mb-0">No messages</p>
+                                        </div>
+                                    <?php else: ?>
+                                        <ul class="timeline">
+                                            <?php foreach ($recentMessages as $message): ?>
+                                                <li>
+                                                    <div class="timeline-panel">
+                                                        <div class="media me-2">
+                                                            <?php if (!empty($message['profile_picture'])): ?>
+                                                                <img alt="image" width="50" src="<?= esc($message['profile_picture']) ?>" class="rounded-circle">
+                                                            <?php else: ?>
+                                                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                                    <?= strtoupper(substr($message['first_name'] ?? 'U', 0, 1)) ?>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h6 class="mb-1">
+                                                                <strong><?= esc(($message['first_name'] ?? '') . ' ' . ($message['last_name'] ?? '')) ?></strong>
+                                                                <?php if (!empty($message['discussion_title'])): ?>
+                                                                    replied to: <?= esc(substr($message['discussion_title'], 0, 30)) ?><?= strlen($message['discussion_title']) > 30 ? '...' : '' ?>
+                                                                <?php else: ?>
+                                                                    sent a message
+                                                                <?php endif; ?>
+                                                            </h6>
+                                                            <p class="mb-1 small text-muted"><?= esc(substr($message['content'] ?? '', 0, 50)) ?><?= strlen($message['content'] ?? '') > 50 ? '...' : '' ?></p>
+                                                            <small class="d-block"><i class="fa-solid fa-clock"></i> <?php
+                                                                $time = strtotime($message['created_at'] ?? 'now');
+                                                                $diff = time() - $time;
+                                                                if ($diff < 60) echo 'Just now';
+                                                                elseif ($diff < 3600) echo floor($diff/60) . ' min ago';
+                                                                elseif ($diff < 86400) echo floor($diff/3600) . ' hour' . (floor($diff/3600) > 1 ? 's' : '') . ' ago';
+                                                                elseif ($diff < 604800) echo floor($diff/86400) . ' day' . (floor($diff/86400) > 1 ? 's' : '') . ' ago';
+                                                                else echo date('M d, Y', $time);
+                                                            ?></small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
                                 </div>
-                                <a class="all-notification" href="#">See all message <i class="fas fa-arrow-right"></i></a>
+                                <a class="all-notification" href="<?= base_url('admin/discussions') ?>">See all messages <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </li>
                         <!-- Notifications Dropdown -->
+                        <?php
+                        // Load notifications for admin users
+                        try {
+                            $db = \Config\Database::connect();
+                            $userModel = new \App\Models\UserModel();
+                            
+                            // Get all admin users
+                            $adminUsers = $userModel->where('role', 'admin')->findAll();
+                            $adminIds = array_column($adminUsers, 'id');
+                            
+                            $recentNotifications = [];
+                            $unreadCount = 0;
+                            
+                            if (!empty($adminIds)) {
+                                $builder = $db->table('notifications');
+                                $builder->select('notifications.*, users.first_name, users.last_name, users.profile_picture');
+                                $builder->join('users', 'users.id = notifications.user_id', 'left');
+                                $builder->whereIn('notifications.user_id', $adminIds);
+                                $builder->orderBy('notifications.sent_at', 'DESC');
+                                $builder->limit(6);
+                                $recentNotifications = $builder->get()->getResultArray();
+                                
+                                // Get unread count
+                                $unreadBuilder = $db->table('notifications');
+                                $unreadCount = $unreadBuilder->whereIn('user_id', $adminIds)
+                                    ->where('is_read', false)
+                                    ->countAllResults();
+                            }
+                        } catch (\Exception $e) {
+                            $recentNotifications = [];
+                            $unreadCount = 0;
+                        }
+                        ?>
                         <li class="nav-item me-2-5">
-                            <a href="#" class="text-color-1 notification" 
+                            <a href="#" class="text-color-1 notification position-relative" 
                                 role="button" 
                                 data-bs-toggle="dropdown" 
                                 data-bs-offset="0,0" 
                                 aria-expanded="false">
                                 <i class="fa-regular fa-bell font-size-24"></i>
-                                <div class="marker"></div>
+                                <?php if ($unreadCount > 0): ?>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                                        <?= $unreadCount ?>
+                                    </span>
+                                <?php endif; ?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end mt-4">
                                 <div id="Notification" class="h-380 scroll-y p-3 custom-scrollbar">
                                     <!-- Notifications Timeline -->
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/profile.png">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Dr Smith uploaded a new report</h6>
-                                                    <small class="d-block">10 December 2023 - 08:15 AM</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-info">
-                                                    AP
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">New Appointment Scheduled</h6>
-                                                    <small class="d-block">10 December 2023 - 09:45 AM</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-success">
-                                                    <i class="fa fa-check-circle"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Patient checked in at reception</h6>
-                                                    <small class="d-block">10 December 2023 - 10:20 AM</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2">
-                                                    <img alt="image" width="50" src="./assets/images/profile.png">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Dr Alice shared a prescription</h6>
-                                                    <small class="d-block">10 December 2023 - 11:00 AM</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-danger">
-                                                    EM
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Emergency Alert: Critical Patient</h6>
-                                                    <small class="d-block">10 December 2023 - 11:30 AM</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-primary">
-                                                    <i class="fa fa-calendar-alt"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">Next Appointment Reminder</h6>
-                                                    <small class="d-block">10 December 2023 - 12:00 PM</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    
+                                    <?php if (empty($recentNotifications)): ?>
+                                        <div class="text-center py-4 text-muted">
+                                            <i class="fas fa-bell-slash fa-2x mb-2"></i>
+                                            <p class="mb-0">No notifications</p>
+                                        </div>
+                                    <?php else: ?>
+                                        <ul class="timeline">
+                                            <?php foreach ($recentNotifications as $notification): ?>
+                                                <li>
+                                                    <div class="timeline-panel">
+                                                        <div class="media me-2">
+                                                            <?php
+                                                            $iconClass = 'media-primary';
+                                                            $icon = 'fa-info-circle';
+                                                            if ($notification['type'] === 'payment') {
+                                                                $iconClass = 'media-warning';
+                                                                $icon = 'fa-credit-card';
+                                                            } elseif ($notification['type'] === 'course') {
+                                                                $iconClass = 'media-success';
+                                                                $icon = 'fa-book';
+                                                            } elseif ($notification['type'] === 'announcement') {
+                                                                $iconClass = 'media-info';
+                                                                $icon = 'fa-bullhorn';
+                                                            }
+                                                            ?>
+                                                            <div class="media me-2 <?= $iconClass ?>">
+                                                                <i class="fa <?= $icon ?>"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h6 class="mb-1">
+                                                                <?= esc($notification['title']) ?>
+                                                                <?php if (!$notification['is_read']): ?>
+                                                                    <span class="badge bg-danger ms-1" style="font-size: 0.6rem;">New</span>
+                                                                <?php endif; ?>
+                                                            </h6>
+                                                            <p class="mb-1 small text-muted"><?= esc(substr($notification['message'], 0, 60)) ?><?= strlen($notification['message']) > 60 ? '...' : '' ?></p>
+                                                            <small class="d-block">
+                                                                <i class="fa-solid fa-clock"></i> 
+                                                                <?php
+                                                                $time = strtotime($notification['sent_at'] ?? $notification['created_at'] ?? 'now');
+                                                                $diff = time() - $time;
+                                                                if ($diff < 60) echo 'Just now';
+                                                                elseif ($diff < 3600) echo floor($diff/60) . ' min ago';
+                                                                elseif ($diff < 86400) echo floor($diff/3600) . ' hour' . (floor($diff/3600) > 1 ? 's' : '') . ' ago';
+                                                                elseif ($diff < 604800) echo floor($diff/86400) . ' day' . (floor($diff/86400) > 1 ? 's' : '') . ' ago';
+                                                                else echo date('M d, Y', $time);
+                                                            ?>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
                                 </div>
-                                <a class="all-notification" href="#">See all notifications <i class="fas fa-arrow-right"></i></a>
+                                <a class="all-notification" href="<?= base_url('admin/notifications') ?>">See all notifications <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </li>
                          <!-- User Profile -->

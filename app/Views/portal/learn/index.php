@@ -141,6 +141,11 @@
                     }
                     echo $totalLectures;
                     ?> lecture<?= $totalLectures != 1 ? 's' : '' ?></small>
+                    <div class="mt-2">
+                        <a href="<?= base_url('portal/discussions/' . $course['id']) ?>" class="btn btn-sm btn-outline-primary w-100">
+                            <i class="fas fa-comments me-2"></i>Course Discussions
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="curriculum-content">

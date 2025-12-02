@@ -96,6 +96,25 @@ $routes->group('admin', ['namespace' => 'App\Controllers', 'filter' => 'adminAut
         $routes->get('view/(:num)', 'Orders::view/$1');
         $routes->post('update-status/(:num)', 'Orders::updateStatus/$1');
     });
+    
+    // Notifications Management
+    $routes->group('notifications', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Notifications::index');
+        $routes->get('view/(:num)', 'Notifications::view/$1');
+        $routes->get('mark-read/(:num)', 'Notifications::markAsRead/$1');
+        $routes->get('mark-all-read', 'Notifications::markAllAsRead');
+        $routes->get('delete/(:num)', 'Notifications::delete/$1');
+    });
+    
+    // Discussions Management
+    $routes->group('discussions', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+        $routes->get('/', 'Discussions::index');
+        $routes->get('view/(:num)', 'Discussions::view/$1');
+        $routes->get('toggle-pin/(:num)', 'Discussions::togglePin/$1');
+        $routes->get('toggle-resolve/(:num)', 'Discussions::toggleResolve/$1');
+        $routes->get('delete/(:num)', 'Discussions::delete/$1');
+        $routes->get('delete-reply/(:num)', 'Discussions::deleteReply/$1');
+    });
 });
 
 // Public/Client Portal Routes - Moved to line 221 below
@@ -245,4 +264,10 @@ $routes->group('portal', ['namespace' => 'App\Controllers\Portal', 'filter' => '
     $routes->get('learn/(:num)', 'Learn::index/$1');
     $routes->get('learn/(:num)/lecture/(:num)', 'Learn::lecture/$1/$2');
     $routes->post('enroll/(:num)', 'Courses::enroll/$1');
+    
+    // Discussions
+    $routes->get('discussions/(:num)', 'Discussions::index/$1');
+    $routes->get('discussions/(:num)/view/(:num)', 'Discussions::view/$1/$2');
+    $routes->post('discussions/(:num)/create', 'Discussions::create/$1');
+    $routes->post('discussions/(:num)/reply/(:num)', 'Discussions::reply/$1/$2');
 });

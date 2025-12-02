@@ -9,7 +9,18 @@
                                 <h3 class="mb-2 text-color-2">Dashboard</h3>
                             </div>
                             <div class="mt-3 mt-lg-0">
-                                
+                                <?php if ($unreadNotificationCount > 0): ?>
+                                    <a href="<?= base_url('admin/notifications') ?>" class="btn btn-primary position-relative">
+                                        <i class="fas fa-bell me-2"></i>Notifications
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            <?= $unreadNotificationCount ?>
+                                        </span>
+                                    </a>
+                                <?php else: ?>
+                                    <a href="<?= base_url('admin/notifications') ?>" class="btn btn-outline-primary">
+                                        <i class="fas fa-bell me-2"></i>Notifications
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div><!-- end card header -->
                     </div>
@@ -109,7 +120,45 @@
                                       </div>
                                   </div>
                                 </div>
-                            </div>
+                             </div>
+                             <div class="col-lg-4 mb-4 mb-lg-0">
+                              <div class="instructors-section card pb-1">
+                                <div class="card-header bg-white d-flex justify-content-between align-items-center py-4">
+                                  <h5 class="mb-0 text-color-2">Recent Notifications</h5>
+                                  <a href="<?= base_url('admin/notifications') ?>" class="text-color-3">View All</a>
+                                </div>
+                                <div class="card-body p-0">
+                                  <?php if (empty($recentNotifications)): ?>
+                                    <div class="p-3 text-center text-muted">
+                                      <i class="fas fa-bell-slash fa-2x mb-2"></i>
+                                      <p class="mb-0">No notifications</p>
+                                    </div>
+                                  <?php else: ?>
+                                    <ul class="list-group list-group-flush">
+                                      <?php foreach (array_slice($recentNotifications, 0, 5) as $notification): ?>
+                                        <li class="list-group-item py-3 <?= !$notification['is_read'] ? 'bg-light' : '' ?>">
+                                          <div class="d-flex align-items-start">
+                                            <div class="flex-grow-1">
+                                              <h6 class="mb-1 text-color-2">
+                                                <?= esc($notification['title']) ?>
+                                                <?php if (!$notification['is_read']): ?>
+                                                  <span class="badge bg-danger ms-2">New</span>
+                                                <?php endif; ?>
+                                              </h6>
+                                              <p class="mb-1 text-color-3 small"><?= esc(substr($notification['message'], 0, 80)) ?><?= strlen($notification['message']) > 80 ? '...' : '' ?></p>
+                                              <small class="text-muted"><?= date('M d, Y H:i', strtotime($notification['sent_at'] ?? $notification['created_at'] ?? 'now')) ?></small>
+                                            </div>
+                                            <a href="<?= base_url('admin/notifications/view/' . $notification['id']) ?>" class="btn btn-sm btn-link text-primary">
+                                              <i class="fas fa-arrow-right"></i>
+                                            </a>
+                                          </div>
+                                        </li>
+                                      <?php endforeach; ?>
+                                    </ul>
+                                  <?php endif; ?>
+                                </div>
+                              </div>
+                             </div>
                              <div class="col-lg-5 mb-4 mb-lg-0">
                               <div class="instructors-section card pb-0">
                                 <div class="card-header border-0 bg-white d-flex justify-content-between align-items-center py-3">
