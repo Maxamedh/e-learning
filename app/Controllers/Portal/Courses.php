@@ -201,30 +201,49 @@ class Courses extends BaseController
         $db->transStart();
 
         try {
-            // Generate order number
+            $orderId = null;
             $orderNumber = 'ORD-' . strtoupper(uniqid());
             
-            // Create order with pending status
-            $orderData = [
-                'order_number' => $orderNumber,
-                'user_id' => $user['id'],
-                'total_amount' => $coursePrice,
-                'discount_amount' => 0,
-                'final_amount' => $finalAmount,
-                'currency' => 'USD',
-                'status' => 'pending',
-                'payment_method' => 'manual',
-            ];
+            // For free courses, create order with completed status automatically
+            // For paid courses, create order with pending status
+            if ($course['is_free'] || $coursePrice == 0) {
+                // Free course - create completed order
+                $orderData = [
+                    'order_number' => $orderNumber,
+                    'user_id' => $user['id'],
+                    'total_amount' => 0,
+                    'discount_amount' => 0,
+                    'final_amount' => 0,
+                    'currency' => 'USD',
+                    'status' => 'completed',
+                    'payment_method' => 'free',
+                    'completed_at' => date('Y-m-d H:i:s'),
+                ];
+            } else {
+                // Paid course - create pending order
+                $orderData = [
+                    'order_number' => $orderNumber,
+                    'user_id' => $user['id'],
+                    'total_amount' => $coursePrice,
+                    'discount_amount' => 0,
+                    'final_amount' => $finalAmount,
+                    'currency' => 'USD',
+                    'status' => 'pending',
+                    'payment_method' => 'manual',
+                ];
+            }
 
-            // Validate order data
+            // Validate and insert order data
             if (!$this->orderModel->insert($orderData)) {
                 $errors = $this->orderModel->errors();
                 $errorMsg = 'Failed to create order. ';
                 if (!empty($errors)) {
                     $errorMsg .= implode(', ', array_values($errors));
                 } else {
-                    $errorMsg .= 'Please check your input and try again.';
+                    $errorMsg .= 'Database error occurred.';
                 }
+                log_message('error', 'Order creation failed: ' . json_encode($errors));
+                log_message('error', 'Order data: ' . json_encode($orderData));
                 throw new \Exception($errorMsg);
             }
 
@@ -249,8 +268,10 @@ class Courses extends BaseController
                 if (!empty($errors)) {
                     $errorMsg .= implode(', ', array_values($errors));
                 } else {
-                    $errorMsg .= 'Please try again.';
+                    $errorMsg .= 'Database error occurred.';
                 }
+                log_message('error', 'Order item creation failed: ' . json_encode($errors));
+                log_message('error', 'Order item data: ' . json_encode($orderItemData));
                 throw new \Exception($errorMsg);
             }
 
@@ -269,8 +290,10 @@ class Courses extends BaseController
                 if (!empty($errors)) {
                     $errorMsg .= implode(', ', array_values($errors));
                 } else {
-                    $errorMsg .= 'Please try again.';
+                    $errorMsg .= 'Database error occurred.';
                 }
+                log_message('error', 'Enrollment creation failed: ' . json_encode($errors));
+                log_message('error', 'Enrollment data: ' . json_encode($enrollmentData));
                 throw new \Exception($errorMsg);
             }
 
@@ -279,32 +302,53 @@ class Courses extends BaseController
                 'total_students' => ($course['total_students'] ?? 0) + 1
             ]);
 
-            // Create notifications for all admin users
-            $adminUsers = $this->userModel->where('role', 'admin')->findAll();
-            foreach ($adminUsers as $admin) {
-                $notificationData = [
-                    'user_id' => $admin['id'],
-                    'title' => 'New Order Pending Approval',
-                    'message' => "A new order (#{$orderNumber}) has been created by {$user['first_name']} {$user['last_name']} for course: {$course['title']}. Amount: $" . number_format($finalAmount, 2) . ". Please review and approve.",
-                    'type' => 'payment',
-                    'related_entity_type' => 'order',
-                    'related_entity_id' => $orderId,
-                    'is_read' => false,
-                ];
-                $this->notificationModel->insert($notificationData);
+            // Create notifications for all admin users (only for paid courses)
+            if (!$course['is_free'] && $coursePrice > 0) {
+                $adminUsers = $this->userModel->where('role', 'admin')->findAll();
+                foreach ($adminUsers as $admin) {
+                    $notificationData = [
+                        'user_id' => $admin['id'],
+                        'title' => 'New Order Pending Approval',
+                        'message' => "A new order (#{$orderNumber}) has been created by {$user['first_name']} {$user['last_name']} for course: {$course['title']}. Amount: $" . number_format($finalAmount, 2) . ". Please review and approve.",
+                        'type' => 'payment',
+                        'related_entity_type' => 'order',
+                        'related_entity_id' => $orderId,
+                        'is_read' => false,
+                    ];
+                    $this->notificationModel->insert($notificationData);
+                }
             }
 
             $db->transComplete();
 
             if ($db->transStatus() === false) {
-                return redirect()->back()->with('error', 'Failed to enroll in course. Please try again.');
+                $dbError = $db->error();
+                log_message('error', 'Transaction failed: ' . json_encode($dbError));
+                return redirect()->back()->with('error', 'Failed to enroll in course. Database transaction failed. Please try again.');
             }
 
-            return redirect()->to('portal/dashboard')->with('success', 'Enrollment request submitted! Your payment is pending approval. You will be able to access the course once payment is approved.');
+            // Redirect based on course type
+            if ($course['is_free'] || $coursePrice == 0) {
+                return redirect()->to('portal/dashboard')->with('success', 'Successfully enrolled in the course! You can now start learning.');
+            } else {
+                return redirect()->to('portal/dashboard')->with('success', 'Enrollment request submitted! Your payment is pending approval. You will be able to access the course once payment is approved.');
+            }
 
         } catch (\Exception $e) {
             $db->transRollback();
-            return redirect()->back()->with('error', 'Failed to enroll in course: ' . $e->getMessage());
+            $errorMessage = $e->getMessage();
+            log_message('error', 'Enrollment error: ' . $errorMessage);
+            log_message('error', 'Stack trace: ' . $e->getTraceAsString());
+            
+            // Show detailed error message
+            $displayMessage = 'Failed to enroll in course. ';
+            if (!empty($errorMessage)) {
+                $displayMessage .= 'Error: ' . $errorMessage;
+            } else {
+                $displayMessage .= 'Please check the logs for more details.';
+            }
+            
+            return redirect()->back()->with('error', $displayMessage);
         }
     }
 }

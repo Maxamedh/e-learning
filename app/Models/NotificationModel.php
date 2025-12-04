@@ -17,9 +17,8 @@ class NotificationModel extends Model
         'related_entity_type', 'related_entity_id', 'is_read'
     ];
 
-    protected $useTimestamps = true;
-    protected $createdField = 'sent_at';
-    protected $updatedField = null;
+    protected $useTimestamps = false;
+    protected $dateFormat = 'datetime';
     
     protected $validationRules = [
         'user_id' => 'required|integer',

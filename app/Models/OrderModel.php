@@ -15,7 +15,7 @@ class OrderModel extends Model
     protected $allowedFields    = [
         'order_number', 'user_id', 'total_amount', 'discount_amount', 
         'final_amount', 'currency', 'status', 
-        'payment_method', 'payment_id'
+        'payment_method', 'payment_id', 'completed_at'
     ];
 
     protected $useTimestamps = true;
