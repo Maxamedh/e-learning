@@ -106,7 +106,7 @@
     <div class="row g-0">
         <!-- Video Player -->
         <div class="col-lg-8">
-            <div class="video-player-container">
+            <div class="video-player-container my-5">
                 <?php if (!empty($currentLecture) && $currentLecture['content_type'] === 'video' && !empty($currentLecture['video_url'])): ?>
                     <video id="courseVideoPlayer" controls controlsList="nodownload" preload="metadata" crossorigin="anonymous">
                         <source src="<?= esc($currentLecture['video_url']) ?>" type="video/mp4">
@@ -129,7 +129,7 @@
         </div>
         
         <!-- Course Sidebar -->
-        <div class="col-lg-4">
+        <div class="col-lg-4 my-5">
             <div class="course-sidebar">
                 <div class="course-sidebar-header">
                     <h5 class="mb-1"><?= esc($course['title']) ?></h5>
