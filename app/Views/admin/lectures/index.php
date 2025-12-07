@@ -218,6 +218,94 @@
 </div>
 <?php endif; ?>
 
+<!-- Edit Lecture Modals -->
+<?php if ($sectionId && !empty($lectures)): ?>
+    <?php foreach ($lectures as $lecture): ?>
+    <div class="modal fade" id="editLectureModal<?= $lecture['id'] ?>" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Lecture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form method="POST" action="<?= base_url('admin/lectures/' . $course['id'] . '/' . $sectionId . '/update/' . $lecture['id']) ?>" enctype="multipart/form-data">
+                    <?= csrf_field() ?>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="edit_lecture_title_<?= $lecture['id'] ?>" class="form-label">Lecture Title *</label>
+                            <input type="text" class="form-control" id="edit_lecture_title_<?= $lecture['id'] ?>" name="title" value="<?= esc($lecture['title']) ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_lecture_content_type_<?= $lecture['id'] ?>" class="form-label">Content Type *</label>
+                            <select class="form-select" id="edit_lecture_content_type_<?= $lecture['id'] ?>" name="content_type" required onchange="toggleEditContentFields(<?= $lecture['id'] ?>)">
+                                <option value="video" <?= $lecture['content_type'] === 'video' ? 'selected' : '' ?>>Video</option>
+                                <option value="article" <?= $lecture['content_type'] === 'article' ? 'selected' : '' ?>>Article</option>
+                                <option value="quiz" <?= $lecture['content_type'] === 'quiz' ? 'selected' : '' ?>>Quiz</option>
+                                <option value="assignment" <?= $lecture['content_type'] === 'assignment' ? 'selected' : '' ?>>Assignment</option>
+                                <option value="live" <?= $lecture['content_type'] === 'live' ? 'selected' : '' ?>>Live Session</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" id="edit_videoFields_<?= $lecture['id'] ?>" style="<?= $lecture['content_type'] !== 'video' ? 'display: none;' : '' ?>">
+                            <label for="edit_video_<?= $lecture['id'] ?>" class="form-label">Upload New Video (Leave empty to keep current)</label>
+                            <input type="file" class="form-control" id="edit_video_<?= $lecture['id'] ?>" name="video" accept="video/*">
+                            <small class="text-muted">MP4, WebM, MOV, AVI - Max 500MB</small>
+                            <?php if (!empty($lecture['video_url'])): ?>
+                                <div class="mt-2">
+                                    <small class="text-muted">Current: </small>
+                                    <a href="<?= esc($lecture['video_url']) ?>" target="_blank" class="text-primary"><?= esc(substr($lecture['video_url'], 0, 50)) ?>...</a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="mb-3" id="edit_videoUrlFields_<?= $lecture['id'] ?>" style="<?= $lecture['content_type'] !== 'video' ? 'display: none;' : '' ?>">
+                            <label for="edit_video_url_<?= $lecture['id'] ?>" class="form-label">Or Video URL (Alternative)</label>
+                            <input type="url" class="form-control" id="edit_video_url_<?= $lecture['id'] ?>" name="video_url" value="<?= esc($lecture['video_url'] ?? '') ?>" placeholder="https://example.com/video.mp4 or YouTube/Vimeo URL">
+                        </div>
+                        <div class="mb-3" id="edit_articleFields_<?= $lecture['id'] ?>" style="<?= $lecture['content_type'] !== 'article' ? 'display: none;' : '' ?>">
+                            <label for="edit_article_content_<?= $lecture['id'] ?>" class="form-label">Article Content</label>
+                            <textarea class="form-control" id="edit_article_content_<?= $lecture['id'] ?>" name="article_content" rows="10"><?= esc($lecture['article_content'] ?? '') ?></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_description_<?= $lecture['id'] ?>" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit_description_<?= $lecture['id'] ?>" name="description" rows="3"><?= esc($lecture['description'] ?? '') ?></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="edit_video_duration_<?= $lecture['id'] ?>" class="form-label">Video Duration (seconds)</label>
+                                <input type="number" class="form-control" id="edit_video_duration_<?= $lecture['id'] ?>" name="video_duration" value="<?= esc($lecture['video_duration'] ?? '') ?>" min="0">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="edit_order_index_<?= $lecture['id'] ?>" class="form-label">Order</label>
+                                <input type="number" class="form-control" id="edit_order_index_<?= $lecture['id'] ?>" name="order_index" value="<?= esc($lecture['order_index']) ?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="edit_is_preview_<?= $lecture['id'] ?>" name="is_preview" value="1" <?= $lecture['is_preview'] ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="edit_is_preview_<?= $lecture['id'] ?>">
+                                        <i class="fa-solid fa-eye text-success me-1"></i>Preview (Free to watch)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="edit_is_published_<?= $lecture['id'] ?>" name="is_published" value="1" <?= $lecture['is_published'] ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="edit_is_published_<?= $lecture['id'] ?>">Published</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Lecture</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+
 <script>
 function toggleContentFields() {
     const contentType = document.getElementById('content_type').value;
@@ -237,6 +325,27 @@ function toggleContentFields() {
         videoFields.style.display = 'none';
         videoUrlFields.style.display = 'none';
         articleFields.style.display = 'none';
+    }
+}
+
+function toggleEditContentFields(lectureId) {
+    const contentType = document.getElementById('edit_lecture_content_type_' + lectureId).value;
+    const videoFields = document.getElementById('edit_videoFields_' + lectureId);
+    const videoUrlFields = document.getElementById('edit_videoUrlFields_' + lectureId);
+    const articleFields = document.getElementById('edit_articleFields_' + lectureId);
+    
+    if (contentType === 'video') {
+        if (videoFields) videoFields.style.display = 'block';
+        if (videoUrlFields) videoUrlFields.style.display = 'block';
+        if (articleFields) articleFields.style.display = 'none';
+    } else if (contentType === 'article') {
+        if (videoFields) videoFields.style.display = 'none';
+        if (videoUrlFields) videoUrlFields.style.display = 'none';
+        if (articleFields) articleFields.style.display = 'block';
+    } else {
+        if (videoFields) videoFields.style.display = 'none';
+        if (videoUrlFields) videoUrlFields.style.display = 'none';
+        if (articleFields) articleFields.style.display = 'none';
     }
 }
 

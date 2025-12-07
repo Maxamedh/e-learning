@@ -34,17 +34,18 @@ class AdminAuth implements FilterInterface
         
         log_message('debug', 'AdminAuth: User found in session - ID: ' . ($user['id'] ?? 'none') . ', Role: ' . ($user['role'] ?? 'none'));
 
-        // Check if user is admin or instructor (staff)
-        if (!isset($user['role']) || !in_array($user['role'], ['admin', 'instructor'])) {
-            log_message('debug', 'AdminAuth: Invalid role - ' . ($user['role'] ?? 'none'));
+        // Check if user is admin or instructor (staff) - case insensitive
+        $userRole = strtolower(trim($user['role'] ?? ''));
+        if (!isset($user['role']) || !in_array($userRole, ['admin', 'instructor'])) {
+            log_message('debug', 'AdminAuth: Invalid role - ' . ($user['role'] ?? 'none') . ' (normalized: ' . $userRole . ')');
             if ($request->isAJAX()) {
                 return service('response')->setJSON([
                     'success' => false,
-                    'message' => 'Access denied. Admin privileges required.',
-                    'redirect' => base_url('portal')
+                    'message' => 'Access denied. Admin or Instructor privileges required.',
+                    'redirect' => base_url('admin/login')
                 ])->setStatusCode(403);
             }
-            return redirect()->to('portal')->with('error', 'Access denied. Admin privileges required.');
+            return redirect()->to('admin/login')->with('error', 'Access denied. Admin or Instructor privileges required. Your role: ' . ($user['role'] ?? 'none'));
         }
 
         // Verify user is still active

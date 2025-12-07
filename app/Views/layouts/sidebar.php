@@ -25,21 +25,54 @@
                 </a>
             </li>
 
-            <!-- Course Management -->
+            <?php 
+            $session = \Config\Services::session();
+            $user = $session->get('user');
+            $isAdmin = isset($user['role']) && $user['role'] === 'admin';
+            $isInstructor = isset($user['role']) && $user['role'] === 'instructor';
+            ?>
+            
+            <?php if ($isAdmin): ?>
+            <!-- Course Management (Admin Only) -->
             <li>
                 <a href="#" class="sidebar-link submenu-parent">
                     <i class="fa-brands fa-discourse"></i>
                     <p>Course Management <i class="fa-solid fa-chevron-right right-icon"></i></p>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('admin/courses') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>All Courses</p></a></li>
+                    <li><a href="<?= base_url('admin/courses') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Manage Courses</p></a></li>
+                    <li><a href="<?= base_url('admin/all-courses') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>All Courses & Students</p></a></li>
                     <li><a href="<?= base_url('admin/courses/create') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Create Course</p></a></li>
                     <li><a href="<?= base_url('admin/categories') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Categories</p></a></li>
                     <li><a href="<?= base_url('admin/enrollments') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Enrollments</p></a></li>
                 </ul>
             </li>
+            <?php endif; ?>
             
-            <!-- Course Content Management -->
+            <?php if ($isInstructor): ?>
+            <!-- Instructor Menu -->
+            <li>
+                <a href="<?= base_url('instructor/courses') ?>" class="sidebar-link <?= (strpos(uri_string(), 'instructor/courses') !== false) ? 'active' : '' ?>">
+                    <i class="fa-brands fa-discourse"></i>
+                    <p>My Courses</p>
+                </a>
+            </li>
+            <li>
+                <a href="<?= base_url('instructor/students') ?>" class="sidebar-link <?= (strpos(uri_string(), 'instructor/students') !== false) ? 'active' : '' ?>">
+                    <i class="fa-solid fa-users"></i>
+                    <p>My Students</p>
+                </a>
+            </li>
+            <li>
+                <a href="<?= base_url('instructor/discussions') ?>" class="sidebar-link <?= (strpos(uri_string(), 'instructor/discussions') !== false) ? 'active' : '' ?>">
+                    <i class="fa-solid fa-comments"></i>
+                    <p>Course Discussions</p>
+                </a>
+            </li>
+            <?php endif; ?>
+            
+            <?php if ($isAdmin): ?>
+            <!-- Course Content Management (Admin Only) -->
             <li>
                 <a href="#" class="sidebar-link submenu-parent">
                     <i class="fa-solid fa-book-open"></i>
@@ -50,7 +83,7 @@
                 </ul>
             </li>
 
-            <!-- User Management -->
+            <!-- User Management (Admin Only) -->
             <li>
                 <a href="#" class="sidebar-link submenu-parent">
                     <i class="fa-solid fa-users"></i>
@@ -64,7 +97,7 @@
                 </ul>
             </li>
 
-            <!-- Order Management -->
+            <!-- Order Management (Admin Only) -->
             <li>
                 <a href="<?= base_url('admin/orders') ?>" class="sidebar-link <?= (strpos(uri_string(), 'admin/orders') !== false) ? 'active' : '' ?>">
                     <i class="fa-solid fa-shopping-cart"></i>
@@ -72,7 +105,7 @@
                 </a>
             </li>
 
-            <!-- Discussion & Notifications -->
+            <!-- Discussion & Notifications (Admin Only) -->
             <li>
                 <a href="#" class="sidebar-link submenu-parent">
                     <i class="fa-solid fa-comments"></i>
@@ -83,44 +116,8 @@
                     <li><a href="<?= base_url('admin/notifications') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Notifications</p></a></li>
                 </ul>
             </li>
+            <?php endif; ?>
 
-            <!-- System Components -->
-            <li>
-                <a href="#" class="sidebar-link submenu-parent">
-                    <i class="fa-solid fa-gears"></i>
-                    <p>System Components <i class="fa-solid fa-chevron-right right-icon"></i></p>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('form') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Forms</p></a></li>
-                    <li><a href="<?= base_url('table-bootstrap') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Bootstrap Table</p></a></li>
-                    <li><a href="<?= base_url('data-table') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Data Table</p></a></li>
-                </ul>
-            </li>
-
-            <!-- Authentication Pages -->
-            <li>
-                <a href="#" class="sidebar-link submenu-parent">
-                    <i class="fa-solid fa-lock"></i>
-                    <p>Authentication <i class="fa-solid fa-chevron-right right-icon"></i></p>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('login') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Login</p></a></li>
-                    <li><a href="<?= base_url('signup') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Register</p></a></li>
-                    <li><a href="<?= base_url('forgot-password') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>Forgot Password</p></a></li>
-                </ul>
-            </li>
-
-            <!-- Error Pages -->
-            <li>
-                <a href="#" class="sidebar-link submenu-parent">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <p>Error Pages <i class="fa-solid fa-chevron-right right-icon"></i></p>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li><a href="<?= base_url('errors/404') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>404 Page</p></a></li>
-                    <li><a href="<?= base_url('errors/500') ?>" class="submenu-link"><i class="fa-solid fa-circle me-4"></i><p>500 Page</p></a></li>
-                </ul>
-            </li>
 
         </ul>
     </div>

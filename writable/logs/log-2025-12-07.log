@@ -1,0 +1,327 @@
+DEBUG - 2025-12-07 11:14:06 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 11:14:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:14:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:14:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:14:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:14:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:02 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 11:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:16 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 11:15:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:16 --> Login attempt - Email: admin@elooxacademy.com, Method: POST
+INFO - 2025-12-07 11:15:16 --> Session set successfully for user: admin@elooxacademy.com, ID: 1, Role: admin
+INFO - 2025-12-07 11:15:16 --> Session ID: 5e8d12fac8ec9338f030326e6c952783
+DEBUG - 2025-12-07 11:15:16 --> Session data before redirect: {"id":"1","uuid":"9d071a36-6c85-4175-8615-d5a31aa65484","email":"admin@elooxacademy.com","role":"admin","first_name":"Admin","last_name":"User","profile_picture":null,"is_admin":true,"is_instructor":false}
+DEBUG - 2025-12-07 11:15:16 --> Session cookie will be set with path: /
+ERROR - 2025-12-07 11:15:16 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', '7dee8cee2cbf2977b877ea96004d7985d560eb1afbe21b826c6e6252605ec...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(157): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->login()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-07 11:15:16 --> Failed to create session record: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', '7dee8cee2cbf2977b877ea96004d7985d560eb1afbe21b826c6e6252605ec...' at line 1
+INFO - 2025-12-07 11:15:16 --> User logged in: admin@elooxacademy.com
+INFO - 2025-12-07 11:15:16 --> Login successful - Redirecting to dashboard for user: admin@elooxacademy.com
+INFO - 2025-12-07 11:15:16 --> Session verified - User ID: 1, Role: admin
+DEBUG - 2025-12-07 11:15:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:16 --> AdminAuth Filter - Session ID: 5e8d12fac8ec9338f030326e6c952783
+DEBUG - 2025-12-07 11:15:16 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 11:15:16 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 11:15:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:20 --> AdminAuth Filter - Session ID: 5e8d12fac8ec9338f030326e6c952783
+DEBUG - 2025-12-07 11:15:20 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 11:15:20 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 11:15:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:22 --> AdminAuth Filter - Session ID: 5e8d12fac8ec9338f030326e6c952783
+DEBUG - 2025-12-07 11:15:22 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 11:15:22 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 11:15:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:45 --> AdminAuth Filter - Session ID: 5e8d12fac8ec9338f030326e6c952783
+DEBUG - 2025-12-07 11:15:45 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 11:15:45 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 11:15:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 11:15:47 --> AdminAuth Filter - Session ID: 5e8d12fac8ec9338f030326e6c952783
+DEBUG - 2025-12-07 11:15:47 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 11:15:47 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:01:48 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:01:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:01:58 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 12:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:01:58 --> Login attempt - Email: admin@elooxacademy.com, Method: POST
+INFO - 2025-12-07 12:01:58 --> Session set successfully for user: admin@elooxacademy.com, ID: 1, Role: admin
+INFO - 2025-12-07 12:01:58 --> Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:01:58 --> Session data before redirect: {"id":"1","uuid":"9d071a36-6c85-4175-8615-d5a31aa65484","email":"admin@elooxacademy.com","role":"admin","first_name":"Admin","last_name":"User","profile_picture":null,"is_admin":true,"is_instructor":false}
+DEBUG - 2025-12-07 12:01:58 --> Session cookie will be set with path: /
+ERROR - 2025-12-07 12:01:58 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'f5fbcb8dd565afe1b5083836146c298c76422dd3f01b2d94cb3fddac46da3...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(157): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->login()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-07 12:01:58 --> Failed to create session record: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('1', 'f5fbcb8dd565afe1b5083836146c298c76422dd3f01b2d94cb3fddac46da3...' at line 1
+INFO - 2025-12-07 12:01:58 --> User logged in: admin@elooxacademy.com
+INFO - 2025-12-07 12:01:58 --> Login successful - Redirecting to dashboard for user: admin@elooxacademy.com
+INFO - 2025-12-07 12:01:58 --> Session verified - User ID: 1, Role: admin
+DEBUG - 2025-12-07 12:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:01:58 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:01:58 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:01:58 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:05 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:05 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:02:05 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:09 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:09 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:02:09 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:10 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:10 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:02:10 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:16 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:16 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:02:16 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:16 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:16 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-07 12:02:16 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:22 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:22 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:02:22 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:02:22 --> AdminAuth Filter - Session ID: 4c6e60864822aac2db6ee5c48e415bf7
+DEBUG - 2025-12-07 12:02:22 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-07 12:02:22 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:22:18 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:22:18 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:22:18 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:22:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:22:24 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:22:24 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:22:24 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:22:31 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:22:31 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:22:31 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:22:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:22:33 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:22:33 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:22:33 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:22:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:22:59 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:22:59 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:22:59 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:23:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:23:02 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:23:02 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:23:02 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:23:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:23:05 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:23:05 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:23:05 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:23:07 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:23:07 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:23:07 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:24:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:24:00 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:24:00 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:24:00 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:24:08 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:24:08 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:24:08 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:24:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:24:17 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:24:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:24:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:24:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:24:17 --> AdminAuth Filter - Session ID: e954c410ef56154c52b17a57c45d0090
+DEBUG - 2025-12-07 12:24:17 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user, success, __ci_vars
+DEBUG - 2025-12-07 12:24:17 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-07 12:25:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-07 12:25:07 --> Logout attempt for user: admin@elooxacademy.com
+ERROR - 2025-12-07 12:25:07 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-07 12:25:07'
+WHERE `user_id` = '1'
+AND `expires_at` > '2025-12-07 ...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `user_se...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user_se...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user_se...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `user_se...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(860): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(192): CodeIgniter\Model->update()
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->logout()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-07 12:25:07 --> Error deactivating sessions: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-07 12:25:07'
+WHERE `user_id` = '1'
+AND `expires_at` > '2025-12-07 ...' at line 1
+INFO - 2025-12-07 12:25:07 --> Session destroyed, redirecting to login
+DEBUG - 2025-12-07 12:25:07 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:25:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:25:15 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 12:25:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:25:15 --> Login attempt - Email: moha@gmail.com, Method: POST
+DEBUG - 2025-12-07 12:25:15 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:25:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:26:12 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:26:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:26:15 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 12:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:26:15 --> Login attempt - Email: moha@gmail.com, Method: POST
+DEBUG - 2025-12-07 12:26:15 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:28:05 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:28:13 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 12:28:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:28:13 --> Login attempt - Email: moha@gmail.com, Method: POST
+DEBUG - 2025-12-07 12:28:13 --> User found - Email: moha@gmail.com, Role: student, ID: 5
+ERROR - 2025-12-07 12:28:13 --> Login denied - Invalid role: student for user: moha@gmail.com
+ERROR - 2025-12-07 12:28:13 --> User data: {"id":"5","email":"moha@gmail.com","role":"student"}
+DEBUG - 2025-12-07 12:28:13 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:28:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:28:22 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 12:28:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:28:22 --> Login attempt - Email: moha@gmail.com, Method: POST
+DEBUG - 2025-12-07 12:28:22 --> User found - Email: moha@gmail.com, Role: student, ID: 5
+ERROR - 2025-12-07 12:28:22 --> Login denied - Invalid role: student for user: moha@gmail.com
+ERROR - 2025-12-07 12:28:22 --> User data: {"id":"5","email":"moha@gmail.com","role":"student"}
+DEBUG - 2025-12-07 12:28:22 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:28:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:03 --> AdminAuth::login called. Method: POST
+DEBUG - 2025-12-07 12:29:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:03 --> Login attempt - Email: mohamed@gmial.com, Method: POST
+DEBUG - 2025-12-07 12:29:03 --> User found - Email: mohamed@gmial.com, Role: instructor, ID: 3
+INFO - 2025-12-07 12:29:03 --> Session set successfully for user: mohamed@gmial.com, ID: 3, Role: instructor
+INFO - 2025-12-07 12:29:03 --> Session ID: b21de1ea820660ac9931184fd0343c07
+DEBUG - 2025-12-07 12:29:03 --> Session data before redirect: {"id":"3","uuid":"ca848d74-2198-4c9d-8f8c-4d4e28e80371","email":"mohamed@gmial.com","role":"instructor","first_name":"Mohamed","last_name":"Hassan","profile_picture":null,"is_admin":false,"is_instructor":true}
+DEBUG - 2025-12-07 12:29:03 --> Session cookie will be set with path: /
+ERROR - 2025-12-07 12:29:03 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('3', '8d7083c948e380059d7f27fce7c1c6833dc68f127a646e471e5aba7db4da6...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(163): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->login()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-07 12:29:03 --> Failed to create session record: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') VALUES ('3', '8d7083c948e380059d7f27fce7c1c6833dc68f127a646e471e5aba7db4da6...' at line 1
+INFO - 2025-12-07 12:29:03 --> User logged in: mohamed@gmial.com
+INFO - 2025-12-07 12:29:03 --> Login successful - Redirecting to dashboard for user: mohamed@gmial.com
+INFO - 2025-12-07 12:29:03 --> Session verified - User ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:29:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:03 --> AdminAuth Filter - Session ID: b21de1ea820660ac9931184fd0343c07
+DEBUG - 2025-12-07 12:29:03 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:29:03 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:29:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:35 --> AdminAuth Filter - Session ID: b21de1ea820660ac9931184fd0343c07
+DEBUG - 2025-12-07 12:29:35 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:29:35 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:29:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:38 --> AdminAuth Filter - Session ID: b21de1ea820660ac9931184fd0343c07
+DEBUG - 2025-12-07 12:29:38 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:29:38 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:29:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:40 --> AdminAuth Filter - Session ID: b21de1ea820660ac9931184fd0343c07
+DEBUG - 2025-12-07 12:29:40 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:29:40 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:29:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:29:45 --> AdminAuth Filter - Session ID: b21de1ea820660ac9931184fd0343c07
+DEBUG - 2025-12-07 12:29:45 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:29:45 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:46:42 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:46:42 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:46:42 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:46:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:46:47 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:46:47 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:46:47 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:46:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:46:49 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:46:49 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:46:49 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:46:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:46:58 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:46:58 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:46:58 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:47:00 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:47:00 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:47:00 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:47:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:47:01 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:47:01 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:47:01 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 12:49:55 --> AdminAuth Filter - Session ID: f9a32efad734d7c226cedc8a538aec81
+DEBUG - 2025-12-07 12:49:55 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
+DEBUG - 2025-12-07 12:49:55 --> AdminAuth: User found in session - ID: 3, Role: instructor
+DEBUG - 2025-12-07 12:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-07 12:50:02 --> Logout attempt for user: mohamed@gmial.com
+ERROR - 2025-12-07 12:50:02 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-07 12:50:02'
+WHERE `user_id` = '3'
+AND `expires_at` > '2025-12-07 ...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `user_se...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user_se...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user_se...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `user_se...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(860): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(198): CodeIgniter\Model->update()
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->logout()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-07 12:50:02 --> Error deactivating sessions: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-07 12:50:02'
+WHERE `user_id` = '3'
+AND `expires_at` > '2025-12-07 ...' at line 1
+INFO - 2025-12-07 12:50:02 --> Session destroyed, redirecting to login
+DEBUG - 2025-12-07 12:50:02 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-07 12:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

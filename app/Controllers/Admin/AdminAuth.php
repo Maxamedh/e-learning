@@ -66,6 +66,9 @@ class AdminAuth extends BaseController
                     ->withInput()
                     ->with('error', 'Invalid email or password');
             }
+            
+            // Debug: Log user role
+            log_message('debug', 'User found - Email: ' . $email . ', Role: ' . ($user['role'] ?? 'not set') . ', ID: ' . ($user['id'] ?? 'none'));
 
             // Verify password
             $passwordValid = password_verify($password, $user['password_hash']);
@@ -91,11 +94,14 @@ class AdminAuth extends BaseController
                     ->with('error', 'Your account has been deactivated');
             }
 
-            // Check if user is admin or instructor
-            if (!in_array($user['role'], ['admin', 'instructor'])) {
+            // Check if user is admin or instructor (case-insensitive)
+            $userRole = strtolower(trim($user['role'] ?? ''));
+            if (!in_array($userRole, ['admin', 'instructor'])) {
+                log_message('error', 'Login denied - Invalid role: ' . ($user['role'] ?? 'NULL') . ' for user: ' . $email);
+                log_message('error', 'User data: ' . json_encode(['id' => $user['id'] ?? 'none', 'email' => $user['email'] ?? 'none', 'role' => $user['role'] ?? 'NULL']));
                 return redirect()->back()
                     ->withInput()
-                    ->with('error', 'Access denied. Admin privileges required.');
+                    ->with('error', 'Access denied. Your account role is "' . ($user['role'] ?? 'not set') . '". Only Admin or Instructor accounts can access this area. Please contact administrator to update your account role.');
             }
 
             // Update last login
@@ -172,7 +178,7 @@ class AdminAuth extends BaseController
             return redirect()->to('admin/dashboard');
         }
 
-        $data['title'] = 'Admin Login';
+        $data['title'] = 'Admin & Instructor Login';
         return view('admin/login', $data);
     }
 

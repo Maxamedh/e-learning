@@ -9,7 +9,7 @@
                     <h3 class="mb-2 text-color-2"><?= $title ?></h3>
                 </div>
                 <div class="mt-3 mt-lg-0">
-                    <a href="<?= base_url('admin/courses') ?>" class="btn btn-secondary">
+                    <a href="<?= base_url((isset($isInstructor) && $isInstructor) ? 'instructor/courses' : 'admin/courses') ?>" class="btn btn-secondary">
                         <i class="fa-solid fa-arrow-left me-2"></i>Back to Courses
                     </a>
                 </div>
@@ -52,7 +52,7 @@
         <div class="tab-pane fade show active" id="details" role="tabpanel">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="<?= base_url('admin/courses/update/' . $course['id']) ?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= base_url((isset($isInstructor) && $isInstructor) ? 'instructor/courses/update/' . $course['id'] : 'admin/courses/update/' . $course['id']) ?>" enctype="multipart/form-data">
                         <?= csrf_field() ?>
                 
                 <div class="row">
@@ -77,17 +77,22 @@
                 </div>
 
                 <div class="row">
+                    <?php if (!isset($isInstructor) || !$isInstructor): ?>
                     <div class="col-md-6 mb-3">
                         <label for="instructor_id" class="form-label">Instructor *</label>
                         <select class="form-select" id="instructor_id" name="instructor_id" required>
                             <option value="">Select Instructor</option>
-                            <?php foreach ($instructors as $instructor): ?>
+                            <?php foreach ($instructors ?? [] as $instructor): ?>
                                 <option value="<?= $instructor['id'] ?>" <?= (old('instructor_id', $course['instructor_id']) == $instructor['id']) ? 'selected' : '' ?>>
                                     <?= esc($instructor['first_name'] . ' ' . $instructor['last_name']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <?php else: ?>
+                    <!-- Instructor cannot change instructor_id - hidden field to preserve it -->
+                    <input type="hidden" name="instructor_id" value="<?= $course['instructor_id'] ?>">
+                    <?php endif; ?>
                     <div class="col-md-6 mb-3">
                         <label for="category_id" class="form-label">Category *</label>
                         <select class="form-select" id="category_id" name="category_id" required>

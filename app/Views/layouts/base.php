@@ -41,7 +41,14 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <ul class="nav d-flex align-items-center">
-                        <!-- Messages Dropdown -->
+                        <?php
+                        $session = \Config\Services::session();
+                        $currentUser = $session->get('user');
+                        $isAdmin = isset($currentUser['role']) && $currentUser['role'] === 'admin';
+                        $isInstructor = isset($currentUser['role']) && $currentUser['role'] === 'instructor';
+                        ?>
+                        <?php if ($isAdmin): ?>
+                        <!-- Messages Dropdown (Admin Only) -->
                         <?php
                         // Load recent discussion replies as messages
                         $db = \Config\Database::connect();
@@ -137,7 +144,9 @@
                                 <a class="all-notification" href="<?= base_url('admin/discussions') ?>">See all messages <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </li>
-                        <!-- Notifications Dropdown -->
+                        <?php endif; ?>
+                        <?php if ($isAdmin): ?>
+                        <!-- Notifications Dropdown (Admin Only) -->
                         <?php
                         // Load notifications for admin users
                         try {
@@ -246,6 +255,7 @@
                                 <a class="all-notification" href="<?= base_url('admin/notifications') ?>">See all notifications <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </li>
+                        <?php endif; ?>
                          <!-- User Profile -->
                         <li class="nav-item dropdown user-profile">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

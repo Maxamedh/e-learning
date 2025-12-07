@@ -8,6 +8,12 @@
                             <div class="flex-grow-1">
                                 <h3 class="mb-2 text-color-2">Dashboard</h3>
                             </div>
+                            <?php 
+                            $session = \Config\Services::session();
+                            $user = $session->get('user');
+                            $isAdmin = isset($user['role']) && $user['role'] === 'admin';
+                            ?>
+                            <?php if ($isAdmin): ?>
                             <div class="mt-3 mt-lg-0">
                                 <?php if ($unreadNotificationCount > 0): ?>
                                     <a href="<?= base_url('admin/notifications') ?>" class="btn btn-primary position-relative">
@@ -22,6 +28,7 @@
                                     </a>
                                 <?php endif; ?>
                             </div>
+                            <?php endif; ?>
                         </div><!-- end card header -->
                     </div>
                     <!--end col-->
@@ -159,206 +166,77 @@
                                 </div>
                               </div>
                              </div>
-                             <div class="col-lg-5 mb-4 mb-lg-0">
-                              <div class="instructors-section card pb-0">
-                                <div class="card-header border-0 bg-white d-flex justify-content-between align-items-center py-3">
-                                  <h5 class="mb-0 text-color-2">Traffic Sources</h5>
-                                  <div>
-                                    <select class="form-select form-select-sm w-auto border-0 text-color-3" aria-label="Select time period">
-                                        <option value="30 days" selected>30 days</option>
-                                        <option value="15 days">15 days</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="card-body p-0 mt-40">
-                                  <div class="mb-2">
-                                    <div class="chart-container">
-                                      <canvas id="trafficChart"></canvas>
-                                   </div>
-                                    <div class="mx-5 mt-5 traffic-legend">
-                                      <table class="table table-borderless">
-                                          <tbody>
-                                              <tr>
-                                                  <td><span class="organic text-color-1">Organic Search</span></td>
-                                                  <td><span class="text-color-2">4,305</span></td>
-                                              </tr>
-                                              <tr>
-                                                  <td><span class="referrals text-color-1">Referrals</span></td>
-                                                  <td><span class="text-color-2">482</span></td>
-                                              </tr>
-                                              <tr>
-                                                  <td><span class="social-media text-color-1">Social Media</span></td>
-                                                  <td><span class="text-color-2">859</span></td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                  </div>                                
-                                </div>
-                                </div>
-                              </div>
-                             </div>
-                             <div class="col-lg-4 mb-4 mb-lg-0">
+                             <?php endif; ?>
+                             <div class="col-lg-8 mb-4 mb-lg-0">
                               <div class="instructors-section card pb-1">
                                 <div class="card-header bg-white d-flex justify-content-between align-items-center py-4">
-                                  <h5 class="mb-0 text-color-2">Top Instructors</h5>
-                                  <a href="#" class="text-color-3">View All</a>
+                                  <h5 class="mb-0 text-color-2">Recent Courses</h5>
+                                  <a href="<?= base_url('admin/courses') ?>" class="text-color-3">View All</a>
                                 </div>
                                 <div class="card-body p-0">
-                                  <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-primary text-white me-3">AB</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Sofnio</h6>
-                                        <small class="text-color-3">info@softnio.com</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <div class="rating-stars text-size-13">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <small class="d-block text-color-3">25 Reviews</small>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-info text-white me-3">AL</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Ashley Lawson</h6>
-                                        <small class="text-color-3">ashley@softnio.com</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <div class="rating-stars text-size-13">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <small class="d-block text-color-3">22 Reviews</small>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-success text-white me-3">JM</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Jane Montgomery</h6>
-                                        <small class="text-color-3">jane84@example.com</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <div class="rating-stars text-size-13">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <small class="d-block text-color-3">19 Reviews</small>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-secondary text-white me-3">LH</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Larry Henry</h6>
-                                        <small class="text-color-3">larry108@example.com</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <div class="rating-stars text-size-13">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <small class="d-block text-color-3">24 Reviews</small>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-secondary text-white me-3">LH</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Larry Henry</h6>
-                                        <small class="text-color-3">larry108@example.com</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <div class="rating-stars text-size-13">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <small class="d-block text-color-3">24 Reviews</small>
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                             </div>
-                             <div class="col-lg-8 mb-4 mb-lg-0">
-                              <div class="instructors-section card">
-                                <div class="card-header border-0 bg-white d-flex justify-content-between align-items-center py-3">
-                                  <h5 class="mb-0 text-color-2">Conversions</h5>
-                                  <div>
-                                    <select class="form-select form-select-sm w-auto border-0 text-color-3" aria-label="Select time period">
-                                        <option value="30 days" selected>30 days</option>
-                                        <option value="15 days">15 days</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="card-body">
-                                  <canvas id="barChart" class="mt-5" height="96"></canvas>
+                                  <?php if (empty($recentCourses)): ?>
+                                    <div class="p-3 text-center text-muted">
+                                      <i class="fas fa-book fa-2x mb-2"></i>
+                                      <p class="mb-0">No courses yet</p>
+                                    </div>
+                                  <?php else: ?>
+                                    <ul class="list-group list-group-flush">
+                                      <?php foreach ($recentCourses as $course): ?>
+                                        <li class="list-group-item d-flex align-items-center py-3">
+                                          <div class="flex-grow-1">
+                                            <h6 class="mb-0 text-color-2">
+                                              <a href="<?= base_url('admin/courses/view/' . $course['id']) ?>" class="text-decoration-none">
+                                                <?= esc($course['title']) ?>
+                                              </a>
+                                            </h6>
+                                            <small class="text-color-3">
+                                              <?= esc($course['first_name'] . ' ' . $course['last_name']) ?> • 
+                                              <?= esc($course['category_name'] ?? 'Uncategorized') ?>
+                                            </small>
+                                          </div>
+                                          <div class="text-end">
+                                            <span class="badge bg-<?= $course['status'] === 'published' ? 'success' : 'secondary' ?>">
+                                              <?= ucfirst($course['status']) ?>
+                                            </span>
+                                          </div>
+                                        </li>
+                                      <?php endforeach; ?>
+                                    </ul>
+                                  <?php endif; ?>
                                 </div>
                               </div>
                              </div>
                              <div class="col-lg-4">
                               <div class="instructors-section card pb-1">
                                 <div class="card-header bg-white d-flex justify-content-between align-items-center py-4">
-                                  <h5 class="mb-0 text-color-2">Top Categories</h5>
-                                  <a href="#" class="text-color-3">View All</a>
+                                  <h5 class="mb-0 text-color-2">Top Courses</h5>
+                                  <a href="<?= base_url('admin/courses') ?>" class="text-color-3">View All</a>
                                 </div>
                                 <div class="card-body p-0">
-                                  <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-primary text-white me-3">AB</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Digital Marketing</h6>
-                                        <small class="text-color-3">16+ Courses</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-info text-white me-3">AL</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Web Development</h6>
-                                        <small class="text-color-3">16+ Courses</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-success text-white me-3">JM</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">UI/UX Design</h6>
-                                        <small class="text-color-3">16+ Courses</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
-                                      </div>
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center py-3">
-                                      <div class="avatar rounded-circle bg-secondary text-white me-3">LH</div>
-                                      <div class="flex-grow-1">
-                                        <h6 class="mb-0 text-color-2">Graphic Design</h6>
-                                        <small class="text-color-3">16+ Courses</small>
-                                      </div>
-                                      <div class="text-end">
-                                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
-                                      </div>
-                                    </li>
-                                  </ul>
+                                  <?php if (empty($topCourses)): ?>
+                                    <div class="p-3 text-center text-muted">
+                                      <i class="fas fa-book fa-2x mb-2"></i>
+                                      <p class="mb-0">No courses yet</p>
+                                    </div>
+                                  <?php else: ?>
+                                    <ul class="list-group list-group-flush">
+                                      <?php foreach ($topCourses as $course): ?>
+                                        <li class="list-group-item d-flex align-items-center py-3">
+                                          <div class="flex-grow-1">
+                                            <h6 class="mb-0 text-color-2">
+                                              <a href="<?= base_url('admin/courses/view/' . $course['id']) ?>" class="text-decoration-none">
+                                                <?= esc($course['title']) ?>
+                                              </a>
+                                            </h6>
+                                            <small class="text-color-3">
+                                              <?= number_format($course['total_students'] ?? 0) ?> students • 
+                                              <?= number_format($course['avg_rating'] ?? 0, 1) ?> <i class="fas fa-star text-warning"></i>
+                                            </small>
+                                          </div>
+                                        </li>
+                                      <?php endforeach; ?>
+                                    </ul>
+                                  <?php endif; ?>
                                 </div>
                               </div>
                              </div>

@@ -240,6 +240,59 @@
                 </section>
                 <?php endif; ?>
 
+                <!-- Course Preview Section -->
+                <?php 
+                $previewLectures = [];
+                foreach ($sections as $section) {
+                    foreach ($section['lectures'] as $lecture) {
+                        if ($lecture['is_preview'] && $lecture['is_published']) {
+                            $previewLectures[] = $lecture;
+                        }
+                    }
+                }
+                // If no preview lectures marked, use first lecture
+                if (empty($previewLectures) && !empty($sections)) {
+                    foreach ($sections as $section) {
+                        if (!empty($section['lectures'])) {
+                            $previewLectures[] = $section['lectures'][0];
+                            break;
+                        }
+                    }
+                }
+                ?>
+                <?php if (!empty($previewLectures)): ?>
+                <section class="mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="mb-0">Course Preview</h2>
+                        <a href="<?= base_url('courses/' . $course['id'] . '/preview') ?>" class="btn btn-outline-primary">
+                            <i class="fas fa-play me-2"></i>Watch Preview
+                        </a>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Preview Available:</strong> Watch <?= count($previewLectures) ?> free preview lecture<?= count($previewLectures) != 1 ? 's' : '' ?> to see what you'll learn in this course.
+                    </div>
+                    <div class="row g-3">
+                        <?php foreach (array_slice($previewLectures, 0, 3) as $lecture): ?>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <i class="fas fa-<?= $lecture['content_type'] === 'video' ? 'play-circle' : 'file-alt' ?> text-primary"></i>
+                                            <span class="badge bg-warning text-dark">Preview</span>
+                                        </div>
+                                        <h6 class="card-title"><?= esc($lecture['title']) ?></h6>
+                                        <?php if (!empty($lecture['description'])): ?>
+                                            <p class="card-text text-muted small"><?= esc(substr($lecture['description'], 0, 100)) ?><?= strlen($lecture['description']) > 100 ? '...' : '' ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </section>
+                <?php endif; ?>
+
                 <!-- Course Content -->
                 <?php if (!empty($sections)): ?>
                 <section class="curriculum-section">
@@ -328,6 +381,11 @@
                                 Continue Learning
                             </a>
                         <?php else: ?>
+                            <?php if (!empty($previewLectures)): ?>
+                                <a href="<?= base_url('courses/' . $course['id'] . '/preview') ?>" class="btn btn-outline-primary mb-2" style="width: 100%;">
+                                    <i class="fas fa-play me-2"></i>Preview Course
+                                </a>
+                            <?php endif; ?>
                             <form method="POST" action="<?= base_url('portal/enroll/' . $course['id']) ?>">
                                 <?= csrf_field() ?>
                                 <button type="submit" class="btn btn-enroll">

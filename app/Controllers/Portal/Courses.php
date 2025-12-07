@@ -168,6 +168,79 @@ class Courses extends BaseController
         return view('portal/courses/category', $data);
     }
 
+    public function preview($id)
+    {
+        $course = $this->courseModel->getCourseById($id);
+        
+        if (!$course || $course['status'] !== 'published') {
+            return redirect()->to('courses')->with('error', 'Course not found.');
+        }
+
+        // Get sections and lectures
+        $sections = $this->sectionModel->getAllSectionsByCourse($id);
+        $previewLectures = [];
+        
+        foreach ($sections as &$section) {
+            $section['lectures'] = $this->lectureModel->getAllLecturesBySection($section['id']);
+            // Get preview lectures
+            foreach ($section['lectures'] as $lecture) {
+                if ($lecture['is_preview'] && $lecture['is_published']) {
+                    $lecture['section_title'] = $section['title'];
+                    $previewLectures[] = $lecture;
+                }
+            }
+        }
+
+        // Get first lecture if no preview lectures marked, or first preview lecture
+        $currentLecture = null;
+        if (!empty($previewLectures)) {
+            $currentLecture = $previewLectures[0];
+        } else {
+            // If no preview lectures, show first lecture as preview
+            foreach ($sections as $section) {
+                if (!empty($section['lectures'])) {
+                    $firstLecture = $section['lectures'][0];
+                    if ($firstLecture['is_published']) {
+                        $firstLecture['section_title'] = $section['title'];
+                        $currentLecture = $firstLecture;
+                        $previewLectures[] = $firstLecture;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Get instructor
+        $instructor = $this->userModel->find($course['instructor_id']);
+        
+        // Get category
+        $category = $this->categoryModel->find($course['category_id']);
+
+        // Check if user is enrolled (optional - preview is public)
+        $isEnrolled = false;
+        $session = \Config\Services::session();
+        $user = $session->get('user');
+        if ($user && isset($user['role']) && $user['role'] === 'student') {
+            $enrollment = $this->enrollmentModel->where('user_id', $user['id'])
+                ->where('course_id', $id)
+                ->first();
+            $isEnrolled = !empty($enrollment);
+        }
+
+        $data = [
+            'title' => 'Preview: ' . $course['title'] . ' - E-LOOX Academy',
+            'course' => $course,
+            'instructor' => $instructor,
+            'category' => $category,
+            'sections' => $sections,
+            'previewLectures' => $previewLectures,
+            'currentLecture' => $currentLecture,
+            'isEnrolled' => $isEnrolled,
+        ];
+
+        return view('portal/courses/preview', $data);
+    }
+
     public function enroll($id)
     {
         $session = \Config\Services::session();

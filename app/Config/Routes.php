@@ -28,6 +28,10 @@ $routes->group('admin', ['namespace' => 'App\Controllers', 'filter' => 'adminAut
     $routes->get('dashboard', 'Dashboard::index');
     $routes->get('/', 'Dashboard::index'); // Redirect admin root to dashboard
     
+    // All Courses View (with enrolled students)
+    $routes->get('all-courses', 'Admin\AllCourses::index');
+    $routes->get('all-courses/(:num)', 'Admin\AllCourses::view/$1');
+    
     // Profile & Settings
     $routes->group('profile', ['namespace' => 'App\Controllers\Admin'], function($routes) {
         $routes->get('/', 'Profile::index');
@@ -246,6 +250,7 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) 
 $routes->get('/', 'Portal\Home::index');
 $routes->get('courses', 'Portal\Courses::index');
 $routes->get('courses/(:num)', 'Portal\Courses::view/$1');
+$routes->get('courses/(:num)/preview', 'Portal\Courses::preview/$1');
 $routes->get('categories/(:num)', 'Portal\Courses::category/$1');
 
 // Portal Authentication (Public)
@@ -270,4 +275,15 @@ $routes->group('portal', ['namespace' => 'App\Controllers\Portal', 'filter' => '
     $routes->get('discussions/(:num)/view/(:num)', 'Discussions::view/$1/$2');
     $routes->post('discussions/(:num)/create', 'Discussions::create/$1');
     $routes->post('discussions/(:num)/reply/(:num)', 'Discussions::reply/$1/$2');
+});
+
+// Instructor Routes (Protected)
+$routes->group('instructor', ['namespace' => 'App\Controllers\Instructor', 'filter' => 'adminAuth'], function($routes) {
+    $routes->get('courses', 'Courses::index');
+    $routes->get('courses/view/(:num)', 'Courses::view/$1');
+    $routes->get('courses/edit/(:num)', 'Courses::edit/$1');
+    $routes->post('courses/update/(:num)', 'Courses::update/$1');
+    $routes->get('discussions', 'Discussions::index');
+    $routes->get('discussions/view/(:num)', 'Discussions::view/$1');
+    $routes->get('students', 'Students::index');
 });

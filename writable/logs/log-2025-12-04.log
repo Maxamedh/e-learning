@@ -584,3 +584,37 @@ DEBUG - 2025-12-04 13:31:52 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-04 13:31:52 --> AdminAuth Filter - Session ID: 3357e010a24ddbdf6666ba0223236f64
 DEBUG - 2025-12-04 13:31:52 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url, user
 DEBUG - 2025-12-04 13:31:52 --> AdminAuth: User found in session - ID: 1, Role: admin
+DEBUG - 2025-12-04 13:51:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-04 13:51:22 --> Logout attempt for user: admin@elooxacademy.com
+ERROR - 2025-12-04 13:51:22 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-04 13:51:22'
+WHERE `user_id` = '1'
+AND `expires_at` > '2025-12-04 ...' at line 1 in C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `user_se...', 0)
+#1 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user_se...')
+#2 C:\xampp\htdocs\e-learning\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user_se...')
+#3 C:\xampp\htdocs\e-learning\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `user_se...', Array, false)
+#4 C:\xampp\htdocs\e-learning\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\e-learning\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\xampp\htdocs\e-learning\system\Model.php(860): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\xampp\htdocs\e-learning\app\Controllers\Admin\AdminAuth.php(192): CodeIgniter\Model->update()
+#8 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(933): App\Controllers\Admin\AdminAuth->logout()
+#9 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminAuth))
+#10 C:\xampp\htdocs\e-learning\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\e-learning\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\e-learning\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\e-learning\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-04 13:51:22 --> Error deactivating sessions: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '2025-12-04 13:51:22'
+WHERE `user_id` = '1'
+AND `expires_at` > '2025-12-04 ...' at line 1
+INFO - 2025-12-04 13:51:22 --> Session destroyed, redirecting to login
+DEBUG - 2025-12-04 13:51:22 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-04 13:51:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-04 13:51:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-04 13:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-04 13:52:01 --> AdminAuth Filter - Session ID: 055d74177ba2f4a5e2665ae9b80aa82b
+DEBUG - 2025-12-04 13:52:01 --> AdminAuth Filter - All session keys: __ci_last_regenerate, _ci_previous_url
+DEBUG - 2025-12-04 13:52:01 --> AdminAuth: No user in session. Session data: {"__ci_last_regenerate":1764856282,"_ci_previous_url":"http:\/\/localhost\/e-learning\/index.php\/"}
+DEBUG - 2025-12-04 13:52:01 --> AdminAuth::login called. Method: GET
+DEBUG - 2025-12-04 13:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

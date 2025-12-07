@@ -29,7 +29,15 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        // Get statistics
+        $session = \Config\Services::session();
+        $user = $session->get('user');
+        
+        // Check if user is instructor
+        if (isset($user['role']) && $user['role'] === 'instructor') {
+            return $this->instructorDashboard();
+        }
+        
+        // Admin dashboard
         $data = [
             'title' => 'Admin Dashboard',
             'stats' => $this->getDashboardStats(),
@@ -42,6 +50,46 @@ class Dashboard extends BaseController
         ];
         
         return view('pages/dashboard', $data);
+    }
+    
+    private function instructorDashboard()
+    {
+        $session = \Config\Services::session();
+        $user = $session->get('user');
+        $instructorId = $user['id'];
+        
+        // Get instructor's courses
+        $instructorCourses = $this->courseModel->where('instructor_id', $instructorId)->findAll();
+        $courseIds = array_column($instructorCourses, 'id');
+        
+        // Get instructor stats
+        $stats = [
+            'total_courses' => count($instructorCourses),
+            'published_courses' => $this->courseModel->where('instructor_id', $instructorId)->where('status', 'published')->countAllResults(),
+            'total_students' => !empty($courseIds) ? $this->enrollmentModel->whereIn('course_id', $courseIds)->countAllResults() : 0,
+            'total_enrollments' => !empty($courseIds) ? $this->enrollmentModel->whereIn('course_id', $courseIds)->countAllResults() : 0,
+        ];
+        
+        // Get recent enrollments for instructor's courses
+        $recentEnrollments = [];
+        if (!empty($courseIds)) {
+            $recentEnrollments = $this->enrollmentModel->select('enrollments.*, users.first_name, users.last_name, users.email, courses.title as course_title')
+                ->join('users', 'users.id = enrollments.user_id', 'left')
+                ->join('courses', 'courses.id = enrollments.course_id', 'left')
+                ->whereIn('enrollments.course_id', $courseIds)
+                ->orderBy('enrollments.enrolled_at', 'DESC')
+                ->limit(10)
+                ->findAll();
+        }
+        
+        $data = [
+            'title' => 'Instructor Dashboard',
+            'stats' => $stats,
+            'courses' => $instructorCourses,
+            'recentEnrollments' => $recentEnrollments,
+        ];
+        
+        return view('instructor/dashboard', $data);
     }
 
     private function getDashboardStats()
